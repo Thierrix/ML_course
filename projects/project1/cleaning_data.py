@@ -16,10 +16,10 @@ from config import dictionary_features, category_features
 #Defining some constants
 
 
-ACCEPTABLE_NAN_PERCENTAGE = 0.1
+
 ACCEPTABLE_NAN_ROW_PERCENTAGE = 0.4
 
-def clean_train_data(x_train,y_train, labels, up_sampling_percentage, degree, variance_threshold): 
+def clean_train_data(x_train,y_train, labels, up_sampling_percentage, degree, variance_threshold, acceptable_nan_percentage): 
     """
     Cleaning data
     :param x_train: training data
@@ -37,7 +37,7 @@ def clean_train_data(x_train,y_train, labels, up_sampling_percentage, degree, va
     
   
     #Removing columns with more than ACCEPTABLE_NAN_PERCENTAGE of NaN values
-    mask_nan_columns = [(np.count_nonzero(np.isnan(x_train[:, i]))/x_train.shape[0]) <= ACCEPTABLE_NAN_PERCENTAGE for i in range (features_number)]
+    mask_nan_columns = [(np.count_nonzero(np.isnan(x_train[:, i]))/x_train.shape[0]) <= acceptable_nan_percentage for i in range (features_number)]
     x_train = x_train[:, mask_nan_columns]
 
     #Creating features list
