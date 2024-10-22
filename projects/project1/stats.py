@@ -24,9 +24,9 @@ def box_cox(arr, _lambda) :
     else :
         return (np.power(arr, _lambda) - 1) / _lambda
         
-def IQR(arr) :
-    Q1 = np.nanpercentile(arr, 25)
-    Q3 = np.nanpercentile(arr, 75)
+def IQR(x) :
+    Q1 = np.nanpercentile(x, 25, axis = 0)
+    Q3 = np.nanpercentile(x, 75, axis = 0)
     IQR = Q3 - Q1
 
     lower_bound = Q1 - 1.5 * IQR

@@ -286,7 +286,8 @@ def build_k_indices(y, k_fold, seed):
     return np.array(k_indices)
 
 
-def cross_validation(y, x, k_indices, k, lambda_, up_sampling_percentage, degree, variance_threshold, gamma, max_iter, threshold,acceptable_nan_percentage, labels):
+def cross_validation(y, x, k_indices, k, lambda_, up_sampling_percentage, degree, variance_threshold, gamma, max_iter, threshold,acceptable_nan_percentage,
+                     labels, outlier_limit, nan_handling):
     """return the loss of ridge regression for a fold corresponding to k_indices
 
     Args:
@@ -316,7 +317,7 @@ def cross_validation(y, x, k_indices, k, lambda_, up_sampling_percentage, degree
 
 
     #Clean the training data
-    x_train_cleaned, y_tr_cleaned, features, median_and_most_probable_class, W, mean = clean_train_data(x_tr, y_tr,labels,up_sampling_percentage , degree, variance_threshold, acceptable_nan_percentage)
+    x_train_cleaned, y_tr_cleaned, features, median_and_most_probable_class, W, mean = clean_train_data(x_tr, y_tr,labels,up_sampling_percentage , degree, variance_threshold, acceptable_nan_percentage, outlier_limit, nan_handling)
     num_samples = x_train_cleaned.shape[0]
     tx_tr = np.c_[np.ones(num_samples), x_train_cleaned]
 
@@ -346,7 +347,8 @@ def cross_validation(y, x, k_indices, k, lambda_, up_sampling_percentage, degree
 
 
 
-def cross_validation_demo(y, x, k_fold, lambdas, gammas, up_sampling_percentages, degrees, variances_threshold,max_iters,decision_threshold, acceptable_nan_percentages,labels):
+def cross_validation_demo(y, x, k_fold, lambdas, gammas, up_sampling_percentages, degrees, variances_threshold,max_iters,
+                          decision_threshold, acceptable_nan_percentages,labels, outliers_row_limit, nan_handlers):
     """cross validation over regularisation parameter lambda.
 
     Args:
@@ -357,7 +359,8 @@ def cross_validation_demo(y, x, k_fold, lambdas, gammas, up_sampling_percentages
         best_lambda : scalar, value of the best lambda
         best_rmse : scalar, the associated root mean squared error for the best lambda
     """
-    print(f'Expcted running time for this cross validation is {round(40.759929180145264*len(lambdas)*len(gammas)*len(up_sampling_percentages)*len(degrees)*len(variances_threshold)*len(max_iters), 2)} s')
+    y = y.copy()
+    x = x.copy()
     seed = 12
     # Split data into k-fold indices
     k_indices = build_k_indices(y, k_fold, seed)
@@ -365,47 +368,49 @@ def cross_validation_demo(y, x, k_fold, lambdas, gammas, up_sampling_percentages
     # Initialize lists to store results
     f1_score_array = []
     param_combinations = []
-    max_steps = len(lambdas)*len(gammas)*len(up_sampling_percentages)*len(degrees)*len(variances_threshold)*len(max_iters)*len(decision_threshold)*len(acceptable_nan_percentages)
+    max_steps = len(lambdas)*len(gammas)*len(up_sampling_percentages)*len(degrees)*len(variances_threshold)*len(max_iters)*len(decision_threshold)*len(acceptable_nan_percentages)*len(outliers_row_limit)*len(nan_handlers)
     step = 1
     # Iterate over all hyperparameters
-    for acceptable_nan_percentage in acceptable_nan_percentages :
-        for threshold in decision_threshold :
-            for gamma in gammas:
-                for up_sampling_percentage in up_sampling_percentages:
-                    for degree in degrees:
-                        for variance_threshold in variances_threshold:
-                            for lambda_ in lambdas:
-                                for max_iter in max_iters : 
-                                    total_f1_score_te = 0
-                                    # Cross-validation loop
-                                    for k in range(k_fold):
-                                        # Perform cross-validation for the current fold
-                                        f1_score_te = cross_validation(y, x, k_indices, k, lambda_, up_sampling_percentage, degree, variance_threshold, gamma,max_iter, threshold,acceptable_nan_percentage,labels)
-                                        # Accumulate the F1-scores for test set
-                                        total_f1_score_te += f1_score_te
-                                        
-                                    #Display at which step we are compaired to the total steps number
-                                    print(f'Step {step}/{max_steps}')
-                                    step += 1
-                                    
-                                    # Average the F1-score over all folds
-                                    avg_f1_score_te = total_f1_score_te / k_fold
-                                    f1_score_array.append(avg_f1_score_te)
-                                    
-                                    # Store the corresponding parameter combination
-                                    param_combinations.append((gamma, up_sampling_percentage, degree, variance_threshold, lambda_, max_iter, threshold, acceptable_nan_percentage))
-                                    #Display the parameters for this iteration
-                                    print(f'F1 score of {avg_f1_score_te} for gamma = {gamma}, up_sampling_percentage = {up_sampling_percentage}, degree = {degree}, variance_treshold = {variance_threshold}, lambda = {lambda_}, max_iter = {max_iter}, threshold = {threshold}, nan percentage = {acceptable_nan_percentage}')
-                                        
+    for nan_handling in nan_handlers : 
+        for acceptable_nan_percentage in acceptable_nan_percentages :
+            for threshold in decision_threshold :
+                for gamma in gammas:
+                    for up_sampling_percentage in up_sampling_percentages:
+                        for degree in degrees:
+                            for variance_threshold in variances_threshold:
+                                for lambda_ in lambdas:
+                                    for max_iter in max_iters : 
+                                        for outlier_limit in outliers_row_limit :
+                                            total_f1_score_te = 0
+                                            # Cross-validation loop
+                                            for k in range(k_fold):
+                                                # Perform cross-validation for the current fold
+                                                f1_score_te = cross_validation(y, x, k_indices, k, lambda_, up_sampling_percentage, degree, variance_threshold, gamma,max_iter, threshold,acceptable_nan_percentage,labels, outlier_limit, nan_handling)
+                                                # Accumulate the F1-scores for test set
+                                                total_f1_score_te += f1_score_te
+                                                
+                                            #Display at which step we are compaired to the total steps number
+                                            print(f'Step {step}/{max_steps}')
+                                            step += 1
+                                            
+                                            # Average the F1-score over all folds
+                                            avg_f1_score_te = total_f1_score_te / k_fold
+                                            f1_score_array.append(avg_f1_score_te)
+                                            
+                                            # Store the corresponding parameter combination
+                                            param_combinations.append((gamma, up_sampling_percentage, degree, variance_threshold, lambda_, max_iter, threshold, acceptable_nan_percentage, outlier_limit, nan_handling))
+                                            #Display the parameters for this iteration
+                                            print(f'F1 score of {avg_f1_score_te} for gamma = {gamma}, up_sampling_percentage = {up_sampling_percentage}, degree = {degree}, variance_treshold = {variance_threshold}, lambda = {lambda_}, outlier limit = {outlier_limit} max_iter = {max_iter}, threshold = {threshold}, nan percentage = {acceptable_nan_percentage}, nan handling = {nan_handling}')
+                                            
     # Get the best F1 score and corresponding parameters
     best_index = np.argmax(f1_score_array)
     best_f1_score = f1_score_array[best_index]
     best_params = param_combinations[best_index]
     
     # Unpack the best parameters
-    best_gamma, best_up_sampling_percentage, best_degree, best_variance_threshold, best_lambda, best_max_iter, best_threshold, best_nan_percentage = best_params
+    best_gamma, best_up_sampling_percentage, best_degree, best_variance_threshold, best_lambda, best_max_iter, best_threshold, best_nan_percentage, best_outlier_limit, best_nan_handler = best_params
     print('finished !')
-    return best_gamma, best_up_sampling_percentage, best_degree, best_variance_threshold, best_lambda,best_max_iter, best_f1_score, best_threshold, best_nan_percentage
+    return best_gamma, best_up_sampling_percentage, best_degree, best_variance_threshold, best_lambda,best_max_iter, best_f1_score, best_threshold, best_nan_percentage, best_outlier_limit, best_nan_handler
    
     
     

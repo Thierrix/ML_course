@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 from helpers import *
 from utils import remove_features, find_key_by_value, create_pca, upsample_class_1_to_percentage, build_poly
 from normalization import z_score_normalization, min_max_normalization, normalize_data
-
+from stats import IQR
 from config import dictionary_features, category_features
 
 
@@ -19,26 +19,29 @@ from config import dictionary_features, category_features
 
 ACCEPTABLE_NAN_ROW_PERCENTAGE = 0.4
 
-def clean_train_data(x_train,y_train, labels, up_sampling_percentage, degree, variance_threshold, acceptable_nan_percentage): 
+def clean_train_data(x_train,y_train, labels, up_sampling_percentage, degree, variance_threshold, acceptable_nan_percentage, outliers_row_limit, nan_handling = 'median'): 
     """
     Cleaning data
     :param x_train: training data
     :return: cleaned data
     """
+    x = x_train.copy()
+    y = y_train.copy()
+    
     median_and_most_probable_class = {}
-    y_train[y_train == -1] = 0
-    x_train, y_train = upsample_class_1_to_percentage(x_train, y_train, up_sampling_percentage)
+    y[y == -1] = 0
+    x, y = upsample_class_1_to_percentage(x, y, up_sampling_percentage)
     
     #Removing the first label which is the id
-    features_number = x_train.shape[1]
+    features_number = x.shape[1]
     features = list(dict.fromkeys(labels))  
     features = [features[i]  for i in range(features_number)]
     features = {word: index for index, word in enumerate(features)}
     
   
     #Removing columns with more than ACCEPTABLE_NAN_PERCENTAGE of NaN values
-    mask_nan_columns = [(np.count_nonzero(np.isnan(x_train[:, i]))/x_train.shape[0]) <= acceptable_nan_percentage for i in range (features_number)]
-    x_train = x_train[:, mask_nan_columns]
+    mask_nan_columns = [(np.count_nonzero(np.isnan(x[:, i]))/x.shape[0]) <= acceptable_nan_percentage for i in range (features_number)]
+    x = x[:, mask_nan_columns]
 
     #Creating features list
     features = list(dict.fromkeys(labels))  
@@ -49,30 +52,37 @@ def clean_train_data(x_train,y_train, labels, up_sampling_percentage, degree, va
     
     #We remove the features that are not useful
     
-    x_train = handle_nan(x_train, features, median_and_most_probable_class)
+    x = handle_nan(x, features, median_and_most_probable_class, nan_handling)
     
     #normalize the data
-    x_train = normalize_data(x_train)
+    x = normalize_data(x)
     #Create a pca on the training set, storing the components and mean of this PCA in order to replicate it
-    x_train, W, mean = create_pca(x_train, variance_threshold)
+    x, W, mean = create_pca(x, variance_threshold)
 
     #This is commented for the time being because doing polynomial expansion is super slow
     #poly_x = build_poly(x_train, degree)
+    x, y = remove_outliers(x, y, outliers_row_limit)
+    return x, y,  features, median_and_most_probable_class, W, mean
 
-    return x_train, y_train,  features, median_and_most_probable_class, W, mean
 
-
-def handle_nan(x_train, features, median_and_most_probable_class) :
+def handle_nan(x, features, median_and_most_probable_class, nan_handling) :
     
     # Replace NaN in categorical features with the median value
     for feature in features:
-        median_value = np.nanmedian(x_train[:, features[feature]])
-        
+        if (nan_handling == 'median') :
+            replace_value = np.nanmedian(x[:, features[feature]])
+            
+        elif (nan_handling == 'mean') :
+            replace_value = np.nanmean(x[:, features[feature]])
+            
+        elif (nan_handling == 'numeric') :
+            replace_value = -1
+                
         #Store the median to replace it on the testing data 
-        median_and_most_probable_class[feature] = median_value
-        x_train[: ,features[feature]] = np.nan_to_num(x_train[:,features[feature]], nan = median_value)
+        median_and_most_probable_class[feature] = replace_value
+        x[: ,features[feature]] = np.nan_to_num(x[:,features[feature]], nan = replace_value)
         
-    return x_train
+    return x
 
 def drop_na_row(x, y) :
     x = x.copy()
@@ -84,6 +94,13 @@ def drop_na_row(x, y) :
     return x,y
 
         
+def remove_outliers(x, y, outliers_row_limit) :
+    lower_bound, upper_bound = IQR(x)
+    outlier = (x < lower_bound) | (x > upper_bound)
+    outlier_number = np.sum(outlier, axis = 1)
+    mask = outlier_number <= outliers_row_limit*x.shape[0]
 
+    return x[mask, :], y[mask]
+        
 
 
