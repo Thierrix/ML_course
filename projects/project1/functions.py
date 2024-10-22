@@ -2,10 +2,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from stats import f1_score
+from clean_data_testing import *
+from cleaning_data import *
+import time
 
 
-def predict(tx ,w) :
-    return np.where(sigmoid(tx@w) >= 0.5, 1, -1)
+def predict(tx ,w, threshold) :
+    return np.where(sigmoid(tx@w) >= threshold, 1, -1)
 
 
 def sigmoid(t):
@@ -23,7 +26,7 @@ def sigmoid(t):
     array([0.52497919, 0.52497919])
     """
 
-    
+    t = np.clip(t, -709, 709)  # Limit the value of t to avoid overflow
     return 1 / (1 + np.exp(-t))
 
 def calculate_loss(y, tx, w):
@@ -178,11 +181,7 @@ def learning_by_penalized_gradient(y, tx, w, gamma, lambda_):
 
     w = w - gamma*gradient
     return loss, w
-
-
-
-
-def stochastic_gradient_descent(y, tx, x_test, y_test ,initial_w, batch_size, max_iters, gamma, lambda_, model = 'logistic'):
+def stochastic_gradient_descent(y, tx ,initial_w, batch_size, max_iters, gamma, lambda_, model = 'logistic'):
     """The Stochastic Gradient Descent algorithm (SGD).
 
     Args:
@@ -201,7 +200,6 @@ def stochastic_gradient_descent(y, tx, x_test, y_test ,initial_w, batch_size, ma
     # Define parameters to store w and loss
     ws = [initial_w]
     f1_tr = []
-    f1_te = []
     losses = []
     w = initial_w
     threshold = 1e-8
@@ -215,18 +213,202 @@ def stochastic_gradient_descent(y, tx, x_test, y_test ,initial_w, batch_size, ma
                 continue
             losses.append(loss)
             ws.append(w)
-            #f1_tr.append(f1_score(y, predict(tx, w)))
-            #f1_te.append(f1_score(y_test, predict(x_test, w)))
+            
             
             if len(losses) > 1 and np.abs(losses[-1] - losses[-2]) < threshold:
                 break
         
-    return f1_tr, f1_te, ws
+    return losses, ws
     
 
 
+def gradient_descent(y, tx ,initial_w, max_iters, gamma, lambda_, model = 'logistic'):
+    """The Gradient Descent (GD) algorithm.
+
+    Args:
+        y: numpy array of shape=(N, )
+        tx: numpy array of shape=(N,2)
+        initial_w: numpy array of shape=(2, ). The initial guess (or the initialization) for the model parameters
+        max_iters: a scalar denoting the total number of iterations of GD
+        gamma: a scalar denoting the stepsize
+
+    Returns:
+        losses: a list of length max_iters containing the loss value (scalar) for each iteration of GD
+        ws: a list of length max_iters containing the model parameters as numpy arrays of shape (2, ), for each iteration of GD
+    """
+    # Define parameters to store w and loss
+    ws = [initial_w]
+    losses = []
+    w = initial_w
+    threshold = 1e-8
+    
+    for n_iter in range(max_iters):
+        if(model == 'logistic') :
+            loss, w = learning_by_penalized_gradient(y, tx, w, gamma, lambda_)
+        elif(model == 'lstq') :
+            continue
+        losses.append(loss)
+        ws.append(w) 
+        if len(losses) > 1 and np.abs(losses[-1] - losses[-2]) < threshold:
+            break
+                
+    return losses, ws
 
 
+
+
+
+
+
+
+def build_k_indices(y, k_fold, seed):
+    """build k indices for k-fold.
+
+    Args:
+        y:      shape=(N,)
+        k_fold: K in K-fold, i.e. the fold num
+        seed:   the random seed
+
+    Returns:
+        A 2D array of shape=(k_fold, N/k_fold) that indicates the data indices for each fold
+
+    >>> build_k_indices(np.array([1., 2., 3., 4.]), 2, 1)
+    array([[3, 2],
+           [0, 1]])
+    """
+    
+    num_row = y.shape[0]
+    interval = int(num_row / k_fold)
+    np.random.seed(seed)
+    indices = np.random.permutation(num_row)
+    k_indices = [indices[k * interval : (k + 1) * interval] for k in range(k_fold)]
+    
+    return np.array(k_indices)
+
+
+def cross_validation(y, x, k_indices, k, lambda_, up_sampling_percentage, degree, variance_threshold, gamma, max_iter, threshold,acceptable_nan_percentage, labels):
+    """return the loss of ridge regression for a fold corresponding to k_indices
+
+    Args:
+        y:          shape=(N,)
+        x:          shape=(N,)
+        k_indices:  2D array returned by build_k_indices()
+        k:          scalar, the k-th fold (N.B.: not to confused with k_fold which is the fold nums)
+        lambda_:    scalar, cf. ridge_regression()
+        degree:     scalar, cf. build_poly()
+
+    Returns:
+        train and test root mean square errors rmse = sqrt(2 mse)
+
+    >>> cross_validation(np.array([1.,2.,3.,4.]), np.array([6.,7.,8.,9.]), np.array([[3,2], [0,1]]), 1, 2, 3)
+    (0.019866645527597114, 0.33555914361295175)
+    """
+
+    #Test data from the k-th fold
+    test_idx = k_indices[k]
+    x_te = x[test_idx]
+    y_te = y[test_idx]
+    
+    # Train data from the remaining k-1 folds
+    train_idx = np.delete(np.arange(len(y)), test_idx)
+    x_tr = x[train_idx]
+    y_tr = y[train_idx]
+
+
+    #Clean the training data
+    x_train_cleaned, y_tr_cleaned, features, median_and_most_probable_class, W, mean = clean_train_data(x_tr, y_tr,labels,up_sampling_percentage , degree, variance_threshold, acceptable_nan_percentage)
+    num_samples = x_train_cleaned.shape[0]
+    tx_tr = np.c_[np.ones(num_samples), x_train_cleaned]
+
+    #Process the testing data to put it in the same state as the training data
+    x_te_cleaned = clean_test_data(x_te, labels, features, median_and_most_probable_class, mean, W, degree)
+    num_samples = x_te_cleaned.shape[0]
+    tx_te = np.c_[np.ones(num_samples), x_te_cleaned]
+
+    #Initialize the initial weight vector, w
+    mean = 0    # Mean of the distribution
+    std_dev = 1 # Standard deviation of the distribution
+    w_initial = np.random.normal(loc=mean, scale=std_dev, size=tx_tr.shape[1])
+
+    #Train the model on this fold
+    losses, ws = gradient_descent(
+    y_tr_cleaned, tx_tr, w_initial, max_iter, gamma, lambda_
+    )
+    
+    #Predict on the testing set for this fold
+    y_predict = predict(tx_te, ws[-1], threshold)
+
+    #Compute the testing F1 score of this fold
+    f1_score_te = f1_score(y_te, y_predict)
+
+    return f1_score_te
+
+
+
+
+def cross_validation_demo(y, x, k_fold, lambdas, gammas, up_sampling_percentages, degrees, variances_threshold,max_iters,decision_threshold, acceptable_nan_percentages,labels):
+    """cross validation over regularisation parameter lambda.
+
+    Args:
+        degree: integer, degree of the polynomial expansion
+        k_fold: integer, the number of folds
+        lambdas: shape = (p, ) where p is the number of values of lambda to test
+    Returns:
+        best_lambda : scalar, value of the best lambda
+        best_rmse : scalar, the associated root mean squared error for the best lambda
+    """
+    print(f'Expcted running time for this cross validation is {round(40.759929180145264*len(lambdas)*len(gammas)*len(up_sampling_percentages)*len(degrees)*len(variances_threshold)*len(max_iters), 2)} s')
+    seed = 12
+    # Split data into k-fold indices
+    k_indices = build_k_indices(y, k_fold, seed)
+    
+    # Initialize lists to store results
+    f1_score_array = []
+    param_combinations = []
+    max_steps = len(lambdas)*len(gammas)*len(up_sampling_percentages)*len(degrees)*len(variances_threshold)*len(max_iters)*len(decision_threshold)*len(acceptable_nan_percentages)
+    step = 1
+    # Iterate over all hyperparameters
+    for acceptable_nan_percentage in acceptable_nan_percentages :
+        for threshold in decision_threshold :
+            for gamma in gammas:
+                for up_sampling_percentage in up_sampling_percentages:
+                    for degree in degrees:
+                        for variance_threshold in variances_threshold:
+                            for lambda_ in lambdas:
+                                for max_iter in max_iters : 
+                                    total_f1_score_te = 0
+                                    # Cross-validation loop
+                                    for k in range(k_fold):
+                                        # Perform cross-validation for the current fold
+                                        f1_score_te = cross_validation(y, x, k_indices, k, lambda_, up_sampling_percentage, degree, variance_threshold, gamma,max_iter, threshold,acceptable_nan_percentage,labels)
+                                        # Accumulate the F1-scores for test set
+                                        total_f1_score_te += f1_score_te
+                                        
+                                    #Display at which step we are compaired to the total steps number
+                                    print(f'Step {step}/{max_steps}')
+                                    step += 1
+                                    
+                                    # Average the F1-score over all folds
+                                    avg_f1_score_te = total_f1_score_te / k_fold
+                                    f1_score_array.append(avg_f1_score_te)
+                                    
+                                    # Store the corresponding parameter combination
+                                    param_combinations.append((gamma, up_sampling_percentage, degree, variance_threshold, lambda_, max_iter, threshold, acceptable_nan_percentage))
+                                    #Display the parameters for this iteration
+                                    print(f'F1 score of {avg_f1_score_te} for gamma = {gamma}, up_sampling_percentage = {up_sampling_percentage}, degree = {degree}, variance_treshold = {variance_threshold}, lambda = {lambda_}, max_iter = {max_iter}, threshold = {threshold}, nan percentage = {acceptable_nan_percentage}')
+                                        
+    # Get the best F1 score and corresponding parameters
+    best_index = np.argmax(f1_score_array)
+    best_f1_score = f1_score_array[best_index]
+    best_params = param_combinations[best_index]
+    
+    # Unpack the best parameters
+    best_gamma, best_up_sampling_percentage, best_degree, best_variance_threshold, best_lambda, best_max_iter, best_threshold, best_nan_percentage = best_params
+    print('finished !')
+    return best_gamma, best_up_sampling_percentage, best_degree, best_variance_threshold, best_lambda,best_max_iter, best_f1_score, best_threshold, best_nan_percentage
+   
+    
+    
 
 
 def batch_iter(y, tx, batch_size, num_batches=1, shuffle=True):
@@ -288,120 +470,6 @@ def batch_iter(y, tx, batch_size, num_batches=1, shuffle=True):
         )  # The first data point of the following batch
         yield y[start_index:end_index], tx[start_index:end_index]
 
-
-
-
-def build_k_indices(y, k_fold, seed):
-    """build k indices for k-fold.
-
-    Args:
-        y:      shape=(N,)
-        k_fold: K in K-fold, i.e. the fold num
-        seed:   the random seed
-
-    Returns:
-        A 2D array of shape=(k_fold, N/k_fold) that indicates the data indices for each fold
-
-    >>> build_k_indices(np.array([1., 2., 3., 4.]), 2, 1)
-    array([[3, 2],
-           [0, 1]])
-    """
-    num_row = y.shape[0]
-    interval = int(num_row / k_fold)
-    np.random.seed(seed)
-    indices = np.random.permutation(num_row)
-    k_indices = [indices[k * interval : (k + 1) * interval] for k in range(k_fold)]
-    
-    return np.array(k_indices)
-
-
-def cross_validation(y, x, k_indices, k, lambda_, batch_size):
-    """return the loss of ridge regression for a fold corresponding to k_indices
-
-    Args:
-        y:          shape=(N,)
-        x:          shape=(N,)
-        k_indices:  2D array returned by build_k_indices()
-        k:          scalar, the k-th fold (N.B.: not to confused with k_fold which is the fold nums)
-        lambda_:    scalar, cf. ridge_regression()
-        degree:     scalar, cf. build_poly()
-
-    Returns:
-        train and test root mean square errors rmse = sqrt(2 mse)
-
-    >>> cross_validation(np.array([1.,2.,3.,4.]), np.array([6.,7.,8.,9.]), np.array([[3,2], [0,1]]), 1, 2, 3)
-    (0.019866645527597114, 0.33555914361295175)
-    """
-   
-    x_test = x[k_indices[k]]
-    y_test = y[k_indices[k]]
-    train_indices = [i for i in range(len(x)) if i not in k_indices[k]]
-    
-    
-    x_train = x[train_indices]
-    y_train = y[train_indices]
-    
-    max_iters = 100000
-    gamma = 0.001
-    num_samples = x_train.shape[0]
-    
-    mean = 0    # Mean of the distribution
-    std_dev = 1 # Standard deviation of the distribution
-    w_initial = np.random.normal(loc=mean, scale=std_dev, size=x_train.shape[1])
-    
-    sgd_losses, sgd_ws = stochastic_gradient_descent(
-    y_train, x_train, w_initial, batch_size, max_iters, gamma, lambda_
-    )
-    y_predict = predict(x_test, sgd_ws[-1])
-    f1 = f1_score(y_test, y_predict)
-
-    
-    return f1
-
-
-
-def cross_validation_demo(y, x, batch_sizes, k_fold, lambdas):
-    """cross validation over regularisation parameter lambda.
-
-    Args:
-        degree: integer, degree of the polynomial expansion
-        k_fold: integer, the number of folds
-        lambdas: shape = (p, ) where p is the number of values of lambda to test
-    Returns:
-        best_lambda : scalar, value of the best lambda
-        best_rmse : scalar, the associated root mean squared error for the best lambda
-    """
-
-    seed = 12
-    batch_sizes = batch_sizes
-    k_fold = k_fold
-    lambdas = lambdas
-    
-    # split data in k fold
-    k_indices = build_k_indices(y, k_fold, seed)
-    # define lists to store the loss of training data and test data
- 
-    f1_score_array = []
-    for lambda_ in lambdas :
-        for batch_size in batch_sizes :
-            total_f1_score_te = 0
-            for k in range(k_fold) :
-                f1_score_te = cross_validation(y,x, k_indices, k, lambda_, batch_size)
-                total_f1_score_te += f1_score_te
-                
-            f1_score_array.append(total_f1_score_te/k_fold)
-
-            
-    best_index = np.argmax(f1_score_array)
-    best_f1_score = f1_score_array[best_index]
-    best_batch_size = batch_sizes[best_index%len(batch_size)]
-    best_lambda = lambdas[best_index//len(batch_size)]
-    
-    return best_batch_size, best_lambda, best_f1_score
-        
-   
-    
-    
 
 
 

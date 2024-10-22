@@ -15,16 +15,17 @@ from config import dictionary_features, category_features
 
 #Defining some constants
 
-median_and_most_probable_class = {}
-ACCEPTABLE_NAN_PERCENTAGE = 0.1
+
+
 ACCEPTABLE_NAN_ROW_PERCENTAGE = 0.4
 
-def clean_train_data(x_train,y_train, labels, up_sampling_percentage, degree):
+def clean_train_data(x_train,y_train, labels, up_sampling_percentage, degree, variance_threshold, acceptable_nan_percentage): 
     """
     Cleaning data
     :param x_train: training data
     :return: cleaned data
     """
+    median_and_most_probable_class = {}
     y_train[y_train == -1] = 0
     x_train, y_train = upsample_class_1_to_percentage(x_train, y_train, up_sampling_percentage)
     
@@ -34,11 +35,9 @@ def clean_train_data(x_train,y_train, labels, up_sampling_percentage, degree):
     features = [features[i]  for i in range(features_number)]
     features = {word: index for index, word in enumerate(features)}
     
-    #We handle the date and rescale some of the features
-    #x_train = handling_data(x_train, features)
-
+  
     #Removing columns with more than ACCEPTABLE_NAN_PERCENTAGE of NaN values
-    mask_nan_columns = [(np.count_nonzero(np.isnan(x_train[:, i]))/x_train.shape[0]) <= ACCEPTABLE_NAN_PERCENTAGE for i in range (features_number)]
+    mask_nan_columns = [(np.count_nonzero(np.isnan(x_train[:, i]))/x_train.shape[0]) <= acceptable_nan_percentage for i in range (features_number)]
     x_train = x_train[:, mask_nan_columns]
 
     #Creating features list
@@ -50,22 +49,26 @@ def clean_train_data(x_train,y_train, labels, up_sampling_percentage, degree):
     
     #We remove the features that are not useful
     
-    x_train = handle_nan(x_train, features)
+    x_train = handle_nan(x_train, features, median_and_most_probable_class)
     
     #normalize the data
     x_train = normalize_data(x_train)
-    x_train, W, mean = create_pca(x_train)
-    poly_x = build_poly(x_train, degree)
+    #Create a pca on the training set, storing the components and mean of this PCA in order to replicate it
+    x_train, W, mean = create_pca(x_train, variance_threshold)
 
-    return poly_x, y_train,  features, median_and_most_probable_class, W, mean
+    #This is commented for the time being because doing polynomial expansion is super slow
+    #poly_x = build_poly(x_train, degree)
+
+    return x_train, y_train,  features, median_and_most_probable_class, W, mean
 
 
-def handle_nan(x_train, features) :
+def handle_nan(x_train, features, median_and_most_probable_class) :
     
     # Replace NaN in categorical features with the median value
     for feature in features:
-        
         median_value = np.nanmedian(x_train[:, features[feature]])
+        
+        #Store the median to replace it on the testing data 
         median_and_most_probable_class[feature] = median_value
         x_train[: ,features[feature]] = np.nan_to_num(x_train[:,features[feature]], nan = median_value)
         

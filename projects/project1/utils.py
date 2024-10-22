@@ -53,7 +53,6 @@ def create_pca(X, variance_threshold=0.90):
     
     #Determine the number of components to retain based on the variance threshold
     num_dimensions = np.argmax(cumulative_variance >= variance_threshold) + 1
-    print(f"Number of components to retain {variance_threshold * 100}% variance: {num_dimensions}")
     
     #Select the top principal components
     W = eigvecs[:, :num_dimensions]  # Select top components based on variance retention
