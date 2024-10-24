@@ -114,7 +114,6 @@ def logistic_regression(y, tx, w):
     return calculate_loss(y, tx, w), calculate_gradient(y, tx, w)
 
 
-
 def penalized_logistic_regression(y, tx, w, lambda_):
     """return the loss and gradient.
 
@@ -181,6 +180,7 @@ def learning_by_penalized_gradient(y, tx, w, gamma, lambda_):
 
     w = w - gamma*gradient
     return loss, w
+    
 def stochastic_gradient_descent(y, tx ,initial_w, batch_size, max_iters, gamma, lambda_, model = 'logistic'):
     """The Stochastic Gradient Descent algorithm (SGD).
 
@@ -300,9 +300,7 @@ def cross_validation(y, x, k_indices, k, lambda_, up_sampling_percentage, degree
 
     Returns:
         train and test root mean square errors rmse = sqrt(2 mse)
-
-    >>> cross_validation(np.array([1.,2.,3.,4.]), np.array([6.,7.,8.,9.]), np.array([[3,2], [0,1]]), 1, 2, 3)
-    (0.019866645527597114, 0.33555914361295175)
+        
     """
 
     #Test data from the k-th fold
@@ -317,7 +315,7 @@ def cross_validation(y, x, k_indices, k, lambda_, up_sampling_percentage, degree
 
 
     #Clean the training data
-    x_train_cleaned, y_tr_cleaned, features, median_and_most_probable_class, W, mean = clean_train_data(x_tr, y_tr,labels,up_sampling_percentage , degree, variance_threshold, acceptable_nan_percentage, outlier_limit, nan_handling)
+    x_train_cleaned, y_tr_cleaned, features, median_and_most_probable_class, W, mean = clean_train_data(x_tr, y_tr,labels,up_sampling_percentage , degree, variance_threshold,     acceptable_nan_percentage, outlier_limit, nan_handling)
     num_samples = x_train_cleaned.shape[0]
     tx_tr = np.c_[np.ones(num_samples), x_train_cleaned]
 
@@ -370,6 +368,7 @@ def cross_validation_demo(y, x, k_fold, lambdas, gammas, up_sampling_percentages
     param_combinations = []
     max_steps = len(lambdas)*len(gammas)*len(up_sampling_percentages)*len(degrees)*len(variances_threshold)*len(max_iters)*len(decision_threshold)*len(acceptable_nan_percentages)*len(outliers_row_limit)*len(nan_handlers)
     step = 1
+    
     # Iterate over all hyperparameters
     for nan_handling in nan_handlers : 
         for acceptable_nan_percentage in acceptable_nan_percentages :
@@ -381,6 +380,7 @@ def cross_validation_demo(y, x, k_fold, lambdas, gammas, up_sampling_percentages
                                 for lambda_ in lambdas:
                                     for max_iter in max_iters : 
                                         for outlier_limit in outliers_row_limit :
+                                            
                                             total_f1_score_te = 0
                                             # Cross-validation loop
                                             for k in range(k_fold):
