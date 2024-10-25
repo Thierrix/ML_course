@@ -8,15 +8,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from helpers import *
 from utils import remove_features, find_key_by_value, create_pca, apply_pca_given_components,upsample_class_1_to_percentage, build_poly
-from normalization import z_score_normalization, min_max_normalization, normalize_data
-from stats import IQR
-from config import dictionary_features, category_features
+from stats import z_score_normalization, min_max_normalization, normalize_data, IQR
 
 
 #Defining some constants
-
-
-
 ACCEPTABLE_NAN_ROW_PERCENTAGE = 0.4
 
 def clean_train_data(x_train,y_train, labels, up_sampling_percentage, degree, variance_threshold, acceptable_nan_percentage, outliers_row_limit, nan_handling = 'median'): 
