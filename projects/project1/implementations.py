@@ -232,7 +232,7 @@ def logistic_regression(y, tx, initial_w, max_iters, gamma):
     """
 
     N = y.shape[0]
-    y = np.reshape(y, (N,))
+    #y = np.reshape(y, (N,))
     threshold = 1e-8 # define convergence when difference between losses of two consecutive iters falls below this
     w = initial_w
     initial_loss =  neg_log_loss(y, tx, initial_w)
