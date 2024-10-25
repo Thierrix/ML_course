@@ -89,10 +89,6 @@ def cross_validation(y, x, k_indices, k, lambda_, up_sampling_percentage, degree
 
     return f1_score_te
 
-
-
-
-
 import itertools
 
 def grid_search_k_fold(y, x, k_fold, lambdas, gammas, up_sampling_percentages, degrees, variances_threshold, max_iters,
@@ -168,6 +164,15 @@ def grid_search_k_fold(y, x, k_fold, lambdas, gammas, up_sampling_percentages, d
     print('Finished!')
     return best_gamma, best_up_sampling_percentage, best_degree, best_variance_threshold, best_lambda, best_max_iter, best_f1_score, best_threshold, best_nan_percentage, best_outlier_limit, best_nan_handler
 
-    
-    
+def slice_data(x_train, y_train, num_slices, seed):    # Determine the size of each slice for both training and test sets
+    # Shuffle indices for training data
+    np.random.seed(seed)
+    train_indices = np.random.permutation(len(x_train))
 
+    x_train_shuffled = x_train[train_indices]
+    y_train_shuffled = y_train[train_indices]
+    train_slice_size = len(x_train) // num_slices
+    x_train_slices = [x_train_shuffled[i * train_slice_size: (i + 1) * train_slice_size] for i in range(num_slices)]
+    y_train_slices = [y_train_shuffled[i * train_slice_size: (i + 1) * train_slice_size] for i in range(num_slices)]
+        
+    return x_train_slices, y_train_slices
