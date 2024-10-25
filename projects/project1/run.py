@@ -5,8 +5,7 @@ from cleaning_data import *
 from stats import *
 from implementations import *
 from utils import split_data, downsample_class_0, upsample_class_1_to_percentage
-from functions import predict
-from clean_data_testing import *
+from functions import predicts
 import datetime
 import seaborn as sns
 import os

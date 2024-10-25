@@ -1,5 +1,5 @@
 import numpy as np
-from utils2 import batch_iter
+from utils import batch_iter
 
 # compute the mean squared error of a model
 def MSE(y, tx, w):

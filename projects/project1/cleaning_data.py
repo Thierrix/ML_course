@@ -1,8 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from helpers import *
-from utils import remove_features, find_key_by_value
-from poly import *
+
+
 
 # Defining some constants
 import numpy as np
@@ -73,6 +73,7 @@ def clean_train_data(
     # Create a pca on the training set, storing the components and mean of this PCA in order to replicate it
     x, W, mean = create_pca(x, variance_threshold)
 
+    #x_before_outliers = x.copy()
     # This is commented for the time being because doing polynomial expansion is super slow
     # poly_x = build_poly(x_train, degree)
     x, y = remove_outliers(x, y, outliers_row_limit)
@@ -141,9 +142,10 @@ def drop_na_row(x, y):
 
 
 def remove_outliers(x, y, outliers_row_limit):
+    
     lower_bound, upper_bound = IQR(x)
     outlier = (x < lower_bound) | (x > upper_bound)
     outlier_number = np.sum(outlier, axis=1)
-    mask = outlier_number <= outliers_row_limit * x.shape[0]
+    mask = outlier_number <= outliers_row_limit * x.shape[1]
 
     return x[mask, :], y[mask]
