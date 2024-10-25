@@ -11,6 +11,7 @@ import datetime
 import seaborn as sns
 import os
 
+
 def run():
 
     print("Beginning data loading")
@@ -52,10 +53,28 @@ def run():
         print("Beginning data cleaning")
 
         # Clean training data
-        x_train_cleaned, y_tr_cleaned, features, median_and_most_probable_class, W, mean = clean_train_data(x_tr, y_tr,labels, upsampling, degree, variance_threshold, nan_percentage, outliers_row_lim)
+        (
+            x_train_cleaned,
+            y_tr_cleaned,
+            features,
+            median_and_most_probable_class,
+            W,
+            mean,
+        ) = clean_train_data(
+            x_tr,
+            y_tr,
+            labels,
+            upsampling,
+            degree,
+            variance_threshold,
+            nan_percentage,
+            outliers_row_lim,
+        )
 
-        # Clean testing data identically to training data cleaning specifications
-        x_te_cleaned = clean_test_data(x_te, labels, features, median_and_most_probable_class, mean, W, degree)
+        # Clean testing data indentically to training data cleaning specifications
+        x_te_cleaned = clean_test_data(
+            x_te, labels, features, median_and_most_probable_class, mean, W, degree
+        )
 
         print("Cleaning complete")
 
@@ -86,8 +105,10 @@ def run():
         y_predict = predict(tx_te, ws[fold], threshold)
         f1_score_te = f1_score(y_te, y_predict)
 
-        print('Model prediction F1 score:')
-        print(f1_score_te)
+    print('Model prediction F1 score:')
+    print(f1_score_te)
+
+    w_mean = np.mean(ws, axis=0)
 
     w_mean = np.mean(ws, axis=0)
 
@@ -95,7 +116,9 @@ def run():
 
     print("Beginning official test data cleaning and label prediction")
 
-    x_test_cleaned = clean_test_data(x_test, labels, features, median_and_most_probable_class, mean, W, degree)
+    x_test_cleaned = clean_test_data(
+        x_test, labels, features, median_and_most_probable_class, mean, W, degree
+    )
     num_samples = x_te.shape[0]
     tx_te = np.c_[np.ones(num_samples), x_te_cleaned]
 
@@ -109,9 +132,17 @@ def run():
     print("Prediction complete, exporting results")
 
     # Save to a CSV file using np.savetxt
-    EXPORTPATH = "C:/Users/clavo/OneDrive - epfl.ch/EPFL/Cours/Semester 1/CS-433/Project/ML_course/projects/project1/data"
-    np.savetxt(EXPORTPATH, submit, delimiter=",", fmt='%d,%d', header='Id,Prediction', comments='')
+    EXPORTPATH = "/Users/williamjallot/Desktop/ML/dataset/result.csv"
+    np.savetxt(
+        EXPORTPATH,
+        submit,
+        delimiter=",",
+        fmt="%d,%d",
+        header="Id,Prediction",
+        comments="",
+    )
 
     print("Export complete")
+
 
 run()

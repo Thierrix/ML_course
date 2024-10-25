@@ -1,72 +1,71 @@
 import numpy as np
 
+
 def apply_pca_given_components(X, mean, W):
     """
     Apply the PCA transformation from a specific PCA.
-    Args : 
+    Args :
         X: data to apply PCA on
         mean : the mean of the PCA to apply
         W : the principal components of the PCA to apply
     Returns :
         x_pca : PCA applied on the data
     """
-    #Subtract by the mean
+    # Subtract by the mean
     x_tilde = X - mean
-    
-    #Project the data onto the principal components
+
+    # Project the data onto the principal components
     x_pca = np.dot(x_tilde, W)
-    
+
     return x_pca
-
-
 
 
 def create_pca(X, variance_threshold=0.90):
     """
     Create a PCA given the data, retaining a specified percentage of variance.
-    
-    Args : 
+
+    Args :
         X : data
         variance_threshold: the desired amount of variance to retain (default 90%)
-        
+
     Returns :
         x_pca : PCA applied on the data, X
         W : the principal components of the PCA
-        mean : the mean of x_train 
-        
+        mean : the mean of x_train
+
     """
 
     mean = np.nanmean(X, axis=0)
     x_tilde = X - mean
-    
 
     cov_matrix = np.cov(x_tilde, rowvar=False)
-    
-    #Eigen decomposition
+
+    # Eigen decomposition
     eigvals, eigvecs = np.linalg.eigh(cov_matrix)
     eigvals = eigvals[::-1]  # Sort eigenvalues in descending order
     eigvecs = eigvecs[:, ::-1]  # Sort eigenvectors accordingly
-    
-    #Calculate cumulative variance explained by the principal components
+
+    # Calculate cumulative variance explained by the principal components
     explained_variance_ratio = eigvals / np.sum(eigvals)
     cumulative_variance = np.cumsum(explained_variance_ratio)
-    
-    #Determine the number of components to retain based on the variance threshold
+
+    # Determine the number of components to retain based on the variance threshold
     num_dimensions = np.argmax(cumulative_variance >= variance_threshold) + 1
-    
-    #Select the top principal components
+
+    # Select the top principal components
     W = eigvecs[:, :num_dimensions]  # Select top components based on variance retention
-    
-    #Project the data onto the selected principal components
+
+    # Project the data onto the selected principal components
     x_pca = np.dot(x_tilde, W)
-    
+
     return x_pca, W, mean
+
 
 def upsample_class_1_to_percentage(X, y, desired_percentage):
     """
     Apply a upsampling to obtain the desired percentage of 1 among the data.
-        
-        Args : 
+
+        Args :
             X: X data to upsample
             y : y data to usample
             desired_precentage : the desired repartition of 1 among the data
@@ -77,46 +76,47 @@ def upsample_class_1_to_percentage(X, y, desired_percentage):
     # Find the indices of class 0 (majority class) and class 1 (minority class)
     indices_class_1 = np.where(y == 1)[0]
     indices_class_0 = np.where(y == 0)[0]
-    
+
     # Number of samples in each class
     num_class_1 = len(indices_class_1)
     num_class_0 = len(indices_class_0)
-    
+
     # Calculate the total number of samples needed for the desired percentage
     total_size = int(num_class_0 / (1 - desired_percentage))
-    
+
     # Calculate the number of class 1 samples needed to reach the desired percentage
     target_num_class_1 = int(total_size * desired_percentage)
-    
+
     # Upsample class 1 by randomly duplicating samples until reaching the target number
-    upsampled_indices_class_1 = np.random.choice(indices_class_1, size=target_num_class_1, replace=True)
-    
+    upsampled_indices_class_1 = np.random.choice(
+        indices_class_1, size=target_num_class_1, replace=True
+    )
+
     # Combine the upsampled class 1 samples with all class 0 samples
     combined_indices = np.concatenate([indices_class_0, upsampled_indices_class_1])
-    
+
     # Shuffle the combined dataset to avoid ordering bias
     np.random.shuffle(combined_indices)
-    
+
     # Return the upsampled feature matrix and label vector
     X_upsampled = X[combined_indices]
     y_upsampled = y[combined_indices]
-    
-    return X_upsampled, y_upsampled
 
+    return X_upsampled, y_upsampled
 
 
 def downsample_class_0(X, y, desired_percentage):
     """
     Apply a downsampling to obtain the desired percentage of 0 among the data.
-    
-    Args : 
+
+    Args :
         X: data to upsample
-        y : 
+        y :
         desired_precentage : the desired repartition of 1 among the data
     Returns :
         X_upsampled : X upsampled to attain the desired percentage
         y_upsampled : y upsampled to attain the desired percentage
-        
+
     """
     N_pos = len(np.where(y == 1)[0])
     N_neg = len(np.where(y == 0)[0])
@@ -124,40 +124,44 @@ def downsample_class_0(X, y, desired_percentage):
     # Separate the samples with label 0 and label 1
     indices_class_0 = np.where(y == 0)[0]
     indices_class_1 = np.where(y == 1)[0]
-    
+
     # Downsample the class 0 samples
-    selected_indices_class_0 = np.random.choice(indices_class_0, size=downsample_size_0, replace=False)
-    
+    selected_indices_class_0 = np.random.choice(
+        indices_class_0, size=downsample_size_0, replace=False
+    )
+
     # Combine the downsampled class 0 samples with all class 1 samples
     combined_indices = np.concatenate([selected_indices_class_0, indices_class_1])
-    
+
     # Shuffle the combined indices to mix the samples
     np.random.shuffle(combined_indices)
-    
+
     # Select the corresponding rows from X and y
     X_downsampled = X[combined_indices]
     y_downsampled = y[combined_indices]
-    
+
     return X_downsampled, y_downsampled
 
 
-def remove_features(x, features_to_remove, features) :
-    
+def remove_features(x, features_to_remove, features):
+
     if not set(features_to_remove).intersection(features):
         return features, x
-    
+
     for feature in features_to_remove:
-        if feature in features :
-            x = np.delete(x, features[feature], axis = 1)
+        if feature in features:
+            x = np.delete(x, features[feature], axis=1)
             features = remove_and_update_indices(features, feature)
-            
+
     return features, x
+
 
 def find_key_by_value(d, value):
     for key, val in d.items():
         if val == value:
             return key
     return None
+
 
 def remove_and_update_indices(d, remove_key):
     if remove_key in d:
@@ -167,7 +171,6 @@ def remove_and_update_indices(d, remove_key):
                 d[key] -= 1
 
     return d
-
 
 
 def split_data(x, y, ratio, seed=1):
@@ -195,36 +198,33 @@ def split_data(x, y, ratio, seed=1):
     """
 
     # set seed
-   
+
     np.random.seed(seed)
     x = np.random.permutation(x)
     np.random.seed(seed)
     y = np.random.permutation(y)
-    # ***************************************************
-    # INSERT YOUR CODE HERE
-    # split the data based on the given ratio: TODO
-    # ***************************************************
+   
     sample_size = y.shape[0]
-    training_size = (int)(np.floor(ratio*sample_size))
+    training_size = (int)(np.floor(ratio * sample_size))
     x_tr = x[:training_size]
-    x_te = x[training_size :]
+    x_te = x[training_size:]
     y_tr = y[:training_size]
     y_te = y[training_size:]
-    
+
     return x_tr, x_te, y_tr, y_te
 
 
 def calculate_downsample_size(N_pos, N_neg, desired_percentage):
     # Calculate the required downsample size for the negative class
     downsample_size_neg = int((N_pos * (1 - desired_percentage)) / desired_percentage)
-    
+
     # Ensure we do not downsample more than available negative samples
     downsample_size_neg = min(downsample_size_neg, N_neg)
-    
+
     return downsample_size_neg
 
 
-def build_poly(x, degree) :
+def build_poly(x, degree):
     """Polynomial basis functions for input data x, for j=0 up to j=degree.
 
     Args:
@@ -303,7 +303,26 @@ def batch_iter(y, tx, batch_size, num_batches=1, shuffle=True):
         yield y[start_index:end_index], tx[start_index:end_index]
 
 
+def build_poly(x, degree):
+    """polynomial basis functions for input data x, for j=0 up to j=degree.
 
+    Args:
+        x: numpy array of shape (N,D), N is the number of samples and D the number of features
+        degree: integer.
 
+    Returns:
+        poly: numpy array of shape (N,d+1)
 
+    >>> build_poly(np.array([0.0, 1.5]), 2)
+    array([[1.  , 0.  , 0.  ],
+           [1.  , 1.5 , 2.25]])
+    """
+    N, D = x.shape
+    poly = np.ones((N, (degree + 1) * D))  # Initialize polynomial feature matrix
 
+    # Expand each feature in X to its powers from 0 to the given degree
+    for i in range(D):
+        for j in range(degree + 1):
+            poly[:, i * (degree + 1) + j] = np.power(x[:, i], j)
+
+    return poly
