@@ -7,7 +7,7 @@ from poly import *
 import numpy as np
 import matplotlib.pyplot as plt
 from helpers import *
-from utils import remove_features, find_key_by_value, create_pca, upsample_class_1_to_percentage, build_poly
+from utils import remove_features, find_key_by_value, create_pca, apply_pca_given_components,upsample_class_1_to_percentage, build_poly
 from normalization import z_score_normalization, min_max_normalization, normalize_data
 from stats import IQR
 from config import dictionary_features, category_features
@@ -63,6 +63,26 @@ def clean_train_data(x_train,y_train, labels, up_sampling_percentage, degree, va
     #poly_x = build_poly(x_train, degree)
     x, y = remove_outliers(x, y, outliers_row_limit)
     return x, y,  features, median_and_most_probable_class, W, mean
+
+def clean_test_data(x_te, labels, features, median_and_most_probable_class, mean, W, degree) :
+
+    x = x_te.copy()
+    #Keep only the features we kept on the training set 
+    mask = [feature in features.keys() for feature in labels]
+    x = x[:, mask]
+    
+    #Replace the nan in the same way we did on the training set
+    for feature in features :
+        nan = median_and_most_probable_class[feature]
+        x[:, features[feature]] = np.nan_to_num(x[:,features[feature]], nan = median_and_most_probable_class[feature])
+
+    #Normalize the testing data independtly from the training set
+    x = normalize_data(x)
+    
+    #Apply the pca given the training PCA
+    x = apply_pca_given_components(x, mean, W)
+  
+    return x
 
 
 def handle_nan(x, features, median_and_most_probable_class, nan_handling) :

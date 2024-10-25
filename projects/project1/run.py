@@ -4,7 +4,6 @@ from helpers import *
 from cleaning_data import *
 from stats import *
 from implementations import *
-from clean_data_testing import *
 from utils import split_data, downsample_class_0, upsample_class_1_to_percentage
 from functions import predict
 from clean_data_testing import *
@@ -17,7 +16,7 @@ def run():
     print("Beginning data loading")
 
     # Load data
-    DATA_PATH = 'C:/Users/clavo/OneDrive - epfl.ch/EPFL/Cours/Semester 1/CS-433/Project/dataset/dataset' # Change to path for dataset.zip extracted folder
+    DATA_PATH = '/Users/williamjallot/Desktop/ML/dataset' # Change to path for dataset.zip extracted folder
     x_train, x_test, y_train, train_ids, test_ids, labels =  load_csv_data(DATA_PATH, sub_sample=False)
     labels.pop(0)
 
@@ -91,7 +90,7 @@ def run():
     print("Prediction complete, exporting results")
 
     # Save to a CSV file using np.savetxt
-    EXPORTPATH = "C:/Users/clavo/OneDrive - epfl.ch/EPFL/Cours/Semester 1/CS-433/Project/ML_course/projects/project1/data/sample-submission.csv"
+    EXPORTPATH = "/Users/williamjallot/Desktop/ML/dataset/result.csv"
     np.savetxt(EXPORTPATH, submit, delimiter=",", fmt='%d,%d', header='Id,Prediction', comments='')
 
     print("Export complete")

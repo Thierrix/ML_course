@@ -59,3 +59,4 @@ def accuracy(y_true, y_pred):
     :return: accuracy
     """
     return np.sum(y_true == y_pred) / len(y_true)
+
