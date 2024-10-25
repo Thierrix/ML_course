@@ -1,4 +1,5 @@
 
+import numpy as np
 def batch_iter(y, tx, batch_size, num_batches=1, shuffle=True):
     """
     Generate a minibatch iterator for a dataset.ÅÅÅÅ
