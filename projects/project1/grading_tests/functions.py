@@ -255,12 +255,6 @@ def gradient_descent(y, tx ,initial_w, max_iters, gamma, lambda_, model = 'logis
     return losses, ws
 
 
-
-
-
-
-
-
 def build_k_indices(y, k_fold, seed):
     """build k indices for k-fold.
 
@@ -287,7 +281,7 @@ def build_k_indices(y, k_fold, seed):
 
 
 def cross_validation(y, x, k_indices, k, lambda_, up_sampling_percentage, degree, variance_threshold, gamma, max_iter, threshold,acceptable_nan_percentage,
-                     labels, outlier_limit, nan_handling):
+                     labels, outlier_limit, nan_handling, descent_mode):
     """return the loss of ridge regression for a fold corresponding to k_indices
 
     Args:
@@ -346,7 +340,7 @@ def cross_validation(y, x, k_indices, k, lambda_, up_sampling_percentage, degree
 
 
 def cross_validation_demo(y, x, k_fold, lambdas, gammas, up_sampling_percentages, degrees, variances_threshold,max_iters,
-                          decision_threshold, acceptable_nan_percentages,labels, outliers_row_limit, nan_handlers):
+                          decision_threshold, acceptable_nan_percentages,labels, outliers_row_limit, nan_handlers, descent_mode):
     """cross validation over regularisation parameter lambda.
 
     Args:
@@ -366,10 +360,11 @@ def cross_validation_demo(y, x, k_fold, lambdas, gammas, up_sampling_percentages
     # Initialize lists to store results
     f1_score_array = []
     param_combinations = []
-    max_steps = len(lambdas)*len(gammas)*len(up_sampling_percentages)*len(degrees)*len(variances_threshold)*len(max_iters)*len(decision_threshold)*len(acceptable_nan_percentages)*len(outliers_row_limit)*len(nan_handlers)
+    max_steps = len(lambdas)*len(gammas)*len(up_sampling_percentages)*len(degrees)*len(variances_threshold)*len(max_iters)*len(decision_threshold)*len(acceptable_nan_percentages)*len(outliers_row_limit)*len(nan_handlers)*len(descent_mode)
     step = 1
     
     # Iterate over all hyperparameters
+    for mode ind escent
     for nan_handling in nan_handlers : 
         for acceptable_nan_percentage in acceptable_nan_percentages :
             for threshold in decision_threshold :
@@ -385,7 +380,7 @@ def cross_validation_demo(y, x, k_fold, lambdas, gammas, up_sampling_percentages
                                             # Cross-validation loop
                                             for k in range(k_fold):
                                                 # Perform cross-validation for the current fold
-                                                f1_score_te = cross_validation(y, x, k_indices, k, lambda_, up_sampling_percentage, degree, variance_threshold, gamma,max_iter, threshold,acceptable_nan_percentage,labels, outlier_limit, nan_handling)
+                                                f1_score_te = cross_validation(y, x, k_indices, k, lambda_, up_sampling_percentage, degree, variance_threshold, gamma,max_iter, threshold,acceptable_nan_percentage,labels, outlier_limit, nan_handling, descent_mode)
                                                 # Accumulate the F1-scores for test set
                                                 total_f1_score_te += f1_score_te
                                                 
