@@ -15,9 +15,10 @@ def MSE(y, tx, w):
     """
     N = y.shape[0]
     e = y - (tx @ w)
-    loss = 1/(2*N) * np.sum(np.power(e, 2))
+    loss = 1 / (2 * N) * np.sum(np.power(e, 2))
 
     return loss
+
 
 # compute the gradient of the MSE loss function
 def compute_gradient_MSE(y, tx, w):
@@ -33,8 +34,9 @@ def compute_gradient_MSE(y, tx, w):
     """
     N = y.shape[0]
     e = y - (tx @ w)
-    grad = -1/N * (tx.T @ e)
+    grad = -1 / N * (tx.T @ e)
     return grad
+
 
 # compute the regularized MSE loss, return both the non-regularized and the regularized loss
 def MSE_regularized(y, tx, w, lambda_):
@@ -49,8 +51,9 @@ def MSE_regularized(y, tx, w, lambda_):
         A scalar containing the error of the loss at w.
     """
     loss = MSE(y, tx, w)
-    regularizer = lambda_*(np.linalg.norm(w)**2)
+    regularizer = lambda_ * (np.linalg.norm(w) ** 2)
     return loss, loss + regularizer
+
 
 # compute sigmoid function
 def sigmoid(t):
@@ -67,25 +70,32 @@ def sigmoid(t):
     >>> sigmoid(np.array([0.1, 0.1]))
     array([0.52497919, 0.52497919])
     """
-    return np.exp(t)/(1 + np.exp(t))
+    return np.exp(t) / (1 + np.exp(t))
+
 
 # compute negative log likelihood loss of a model
 def neg_log_loss(y, tx, w):
     prob = sigmoid(tx @ w)
     epsilon = 1e-15
-    return -np.mean(y * np.log(np.clip(prob, epsilon, 1)) + (1 - y) * np.log(np.clip(1 - prob, epsilon, 1)))
+    return -np.mean(
+        y * np.log(np.clip(prob, epsilon, 1))
+        + (1 - y) * np.log(np.clip(1 - prob, epsilon, 1))
+    )
+
 
 # compute gradient of negative log likelihood loss function
 def neg_log_gradient(y, tx, w):
-    gradient = 1/y.shape[0] * (tx.T @ (sigmoid(tx @ w) - y))
+    gradient = 1 / y.shape[0] * (tx.T @ (sigmoid(tx @ w) - y))
     return gradient
+
 
 # compute gradient of regularized negative log likelihood loss function
 def neg_log_gradient_reg(y, lambda_, tx, w):
     gradient = neg_log_gradient(y, tx, w)
-    return gradient + 2*lambda_*w
+    return gradient + 2 * lambda_ * w
 
-# train model using least squares 
+
+# train model using least squares
 def least_squares(y, tx):
     """Calculate the least squares solution.
        returns mse, and optimal weights.
@@ -104,12 +114,13 @@ def least_squares(y, tx):
     N = y.shape[0]
     y = np.reshape(y, (N,))
     w = np.linalg.solve(tx.T @ tx, tx.T @ y)
-    MSE = 1/(2*N) * np.sum((y - (tx @ w))**2, 0)
+    MSE = 1 / (2 * N) * np.sum((y - (tx @ w)) ** 2, 0)
     return w, MSE
+
 
 # train model using gradient descent on the MSE loss function
 def mean_squared_error_gd(y, tx, initial_w, max_iters, gamma):
-    """"The Gradient Descent (GD) algorithm.
+    """ "The Gradient Descent (GD) algorithm.
 
     Args:
         y: numpy array of shape=(N, )
@@ -120,27 +131,30 @@ def mean_squared_error_gd(y, tx, initial_w, max_iters, gamma):
 
     Returns:
         w: optimal weights, numpy array of shape(D,), D is the number of features.
-        loss: scalar.        
+        loss: scalar.
     """
 
     N = y.shape[0]
     y = np.reshape(y, (N,))
-    threshold = 1e-8 # define convergence when difference between losses of two consecutive iters falls below this
+    threshold = 1e-8  # define convergence when difference between losses of two consecutive iters falls below this
     ws = [initial_w]
-    initial_loss =  MSE(y, tx, initial_w)
+    initial_loss = MSE(y, tx, initial_w)
     losses = [initial_loss]
     w = initial_w
-    
-    for n_iter in range(max_iters): # iterating on guess for model weights
-        gradient = compute_gradient_MSE(y, tx, w) # compute sgradient over all data points
-        w -= gamma*gradient # update w based on gradient computation
+
+    for n_iter in range(max_iters):  # iterating on guess for model weights
+        gradient = compute_gradient_MSE(
+            y, tx, w
+        )  # compute sgradient over all data points
+        w -= gamma * gradient  # update w based on gradient computation
         loss = MSE(y, tx, w)
         ws.append(w)
         losses.append(loss)
         if len(losses) > 1 and np.abs(losses[-1] - losses[-2]) < threshold:
-            break # convergence achieved, end loop and return weights/loss
+            break  # convergence achieved, end loop and return weights/loss
 
     return w, losses[-1]
+
 
 # train model using gradient descent on the MSE loss function
 def mean_squared_error_sgd(y, tx, initial_w, max_iters, gamma):
@@ -157,26 +171,31 @@ def mean_squared_error_sgd(y, tx, initial_w, max_iters, gamma):
         loss: scalar.
 
     """
-    
+
     N = y.shape[0]
     y = np.reshape(y, (N,))
-    threshold = 1e-8 # define convergence when difference between losses of two consecutive iters falls below this
+    threshold = 1e-8  # define convergence when difference between losses of two consecutive iters falls below this
     ws = [initial_w]
-    initial_loss =  MSE(y, tx, initial_w)
+    initial_loss = MSE(y, tx, initial_w)
     losses = [initial_loss]
     w = initial_w
-    for n_iter in range(max_iters): # iterating on guess for model weights
-        for minibatch_y, minibatch_tx in batch_iter(y, tx, 1): # iterating for batch subset of data points
-            gradient = compute_gradient_MSE(minibatch_y, minibatch_tx, w) # compute gradient from subset
-            w -= gamma*gradient # update weights with gradient
+    for n_iter in range(max_iters):  # iterating on guess for model weights
+        for minibatch_y, minibatch_tx in batch_iter(
+            y, tx, 1
+        ):  # iterating for batch subset of data points
+            gradient = compute_gradient_MSE(
+                minibatch_y, minibatch_tx, w
+            )  # compute gradient from subset
+            w -= gamma * gradient  # update weights with gradient
             loss = MSE(minibatch_y, minibatch_tx, w)
             ws.append(w)
             losses.append(loss)
 
             if len(losses) > 1 and np.abs(losses[-1] - losses[-2]) < threshold:
-                break # convergence achieved, end loop and return weights/loss
+                break  # convergence achieved, end loop and return weights/loss
 
     return w, losses[-1]
+
 
 # train model using ridge regression
 def ridge_regression(y, tx, lambda_):
@@ -198,10 +217,11 @@ def ridge_regression(y, tx, lambda_):
     N = y.shape[0]
     y = np.reshape(y, (N,))
     D = np.shape(tx)[1]
-    lambda_prime = 2*N*lambda_  
+    lambda_prime = 2 * N * lambda_
     w = np.linalg.solve(((tx.T @ tx) + lambda_prime * np.identity(D)), (tx.T @ y))
     MSE, MSE_reg = MSE_regularized(y, tx, w, lambda_)
     return w, MSE
+
 
 # train model using logistic regression
 def logistic_regression(y, tx, initial_w, max_iters, gamma):
@@ -232,24 +252,26 @@ def logistic_regression(y, tx, initial_w, max_iters, gamma):
     """
 
     N = y.shape[0]
-    #y = np.reshape(y, (N,))
-    threshold = 1e-8 # define convergence when difference between losses of two consecutive iters falls below this
+    # y = np.reshape(y, (N,))
+    threshold = 1e-8  # define convergence when difference between losses of two consecutive iters falls below this
     w = initial_w
-    initial_loss =  neg_log_loss(y, tx, initial_w)
+    initial_loss = neg_log_loss(y, tx, initial_w)
     losses = [initial_loss]
-   
-    
-    for n_iter in range(max_iters): # iterating on guess for model weights
 
-        gradient = neg_log_gradient(y, tx, w) # compute gradient of negative log likelihood loss at model weights
-        w -= gamma*gradient # updating the weights based on gradient
+    for n_iter in range(max_iters):  # iterating on guess for model weights
+
+        gradient = neg_log_gradient(
+            y, tx, w
+        )  # compute gradient of negative log likelihood loss at model weights
+        w -= gamma * gradient  # updating the weights based on gradient
         loss = neg_log_loss(y, tx, w)
         losses.append(loss)
-        
+
         if len(losses) > 1 and np.abs(losses[-1] - losses[-2]) < threshold:
-            break # convergence achieved, end loop and return weights/loss
+            break  # convergence achieved, end loop and return weights/loss
 
     return w, losses[-1]
+
 
 # train model using regularized logistic regression
 def reg_logistic_regression(y, tx, lambda_, initial_w, max_iters, gamma):
@@ -284,20 +306,21 @@ def reg_logistic_regression(y, tx, lambda_, initial_w, max_iters, gamma):
     """
     N = y.shape[0]
     y = np.reshape(y, (N,))
-    threshold = 1e-8 # define convergence when difference between losses of two consecutive iters falls below this
+    threshold = 1e-8  # define convergence when difference between losses of two consecutive iters falls below this
     w = initial_w
-    initial_loss =  neg_log_loss(y, tx, initial_w)
+    initial_loss = neg_log_loss(y, tx, initial_w)
     losses = [initial_loss]
-   
-    
-    for n_iter in range(max_iters): # iterating on guess for model weights
 
-        gradient = neg_log_gradient_reg(y, lambda_, tx, w) # compute gradient of regularized negative log likelihood
-        w -= gamma*gradient # update model weights based on gradient
+    for n_iter in range(max_iters):  # iterating on guess for model weights
+
+        gradient = neg_log_gradient_reg(
+            y, lambda_, tx, w
+        )  # compute gradient of regularized negative log likelihood
+        w -= gamma * gradient  # update model weights based on gradient
         loss = neg_log_loss(y, tx, w)
         losses.append(loss)
-        
+
         if len(losses) > 1 and np.abs(losses[-1] - losses[-2]) < threshold:
-            break # convergence achieved, end loop and return weights/loss
+            break  # convergence achieved, end loop and return weights/loss
 
     return w, losses[-1]
