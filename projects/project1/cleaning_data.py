@@ -73,11 +73,11 @@ def clean_train_data(
     # Create a pca on the training set, storing the components and mean of this PCA in order to replicate it
     x, W, mean = create_pca(x, variance_threshold)
 
-    #x_before_outliers = x.copy()
+    x_before_outliers = x.copy()
     # This is commented for the time being because doing polynomial expansion is super slow
     # poly_x = build_poly(x_train, degree)
     x, y = remove_outliers(x, y, outliers_row_limit)
-    return x, y, features, median_and_most_probable_class, W, mean
+    return x, y, features, median_and_most_probable_class, W, mean, x_before_outliers
 
 
 def clean_test_data(

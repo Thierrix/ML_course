@@ -68,12 +68,15 @@ def upsample_class_1_to_percentage(X, y, desired_percentage):
         Args :
             X: X data to upsample
             y : y data to usample
-            desired_precentage : the desired repartition of 1 among the data
+            desired_precentage : the desired repartition of 1 among the data, must be higher than the initial percentage and lower than 1
         Returns :
             X_upsampled : X upsampled to attain the desired percentage
             y_upsampled : y upsampled to attain the desired percentage
     """
     # Find the indices of class 0 (majority class) and class 1 (minority class)
+    initial_percentage = np.sum(y == 1)/y.shape[0]
+    assert(desired_percentage >= initial_percentage and desired_percentage <= 1), "The desired percentage must be higher than the initial percentage"
+
     indices_class_1 = np.where(y == 1)[0]
     indices_class_0 = np.where(y == 0)[0]
 
@@ -144,7 +147,17 @@ def downsample_class_0(X, y, desired_percentage):
 
 
 def remove_features(x, features_to_remove, features):
+    """
+    Remove the selected features from x and from the available features list.
 
+    Args :
+        x:  numpy array of shape (N,D), N is the number of samples and D the number of features.
+        features_to_reùpve : the desired repartition of 1 among the data
+    Returns :
+        X_upsampled : X upsampled to attain the desired percentage
+        y_upsampled : y upsampled to attain the desired percentage
+
+    """
     if not set(features_to_remove).intersection(features):
         return features, x
 
