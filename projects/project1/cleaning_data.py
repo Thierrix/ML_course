@@ -44,7 +44,7 @@ def clean_train_data(
 
     median_and_most_probable_class = {}
     y[y == -1] = 0
-    x, y = upsample_class_1_to_percentage(x, y, up_sampling_percentage)
+    
 
     # Removing the first label which is the id
     features_number = x.shape[1]
@@ -68,16 +68,18 @@ def clean_train_data(
 
     x = handle_nan(x, features, median_and_most_probable_class, nan_handling)
 
+    
+    x, y = upsample_class_1_to_percentage(x, y, up_sampling_percentage)
     # normalize the data
     x = normalize_data(x)
     # Create a pca on the training set, storing the components and mean of this PCA in order to replicate it
     x, W, mean = create_pca(x, variance_threshold)
 
-    x_before_outliers = x.copy()
+    #x_before_outliers = x.copy()
     # This is commented for the time being because doing polynomial expansion is super slow
     # poly_x = build_poly(x_train, degree)
     x, y = remove_outliers(x, y, outliers_row_limit)
-    return x, y, features, median_and_most_probable_class, W, mean, x_before_outliers
+    return x, y, features, median_and_most_probable_class, W, mean
 
 
 def clean_test_data(
