@@ -291,3 +291,17 @@ def grid_search_k_fold(
         best_outlier_limit,
         best_nan_handler,
     )
+
+def slice_data(x_train, y_train, num_slices, seed):    # Determine the size of each slice for both training and test sets
+     # Shuffle indices for training data
+    np.random.seed(seed)
+    train_indices = np.random.permutation(len(x_train))
+
+    x_train_shuffled = x_train[train_indices]
+    y_train_shuffled = y_train[train_indices]
+    train_slice_size = len(x_train) // num_slices
+    x_train_slices = [x_train_shuffled[i * train_slice_size: (i + 1) * train_slice_size] for i in range(num_slices)]
+    y_train_slices = [y_train_shuffled[i * train_slice_size: (i + 1) * train_slice_size] for i in range(num_slices)]
+    
+    
+    return x_train_slices, y_train_slices
