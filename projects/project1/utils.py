@@ -20,7 +20,7 @@ def apply_pca_given_components(X, mean, W):
     return x_pca
 
 
-def create_pca(X, variance_threshold=0.90, num_components=None):
+def create_pca(X, variance_threshold=0.90):
     """
     Create a PCA given the data, either retaining a specified percentage of variance or specifying the number of components.
 
@@ -50,12 +50,8 @@ def create_pca(X, variance_threshold=0.90, num_components=None):
     explained_variance_ratio = eigvals / np.sum(eigvals)
     cumulative_variance = np.cumsum(explained_variance_ratio)
 
-    if num_components is None:
-        # Determine the number of components to retain based on the variance threshold
-        num_dimensions = np.argmax(cumulative_variance >= variance_threshold) + 1
-    else:
-        # Use the specified number of components if provided
-        num_dimensions = num_components
+    # Determine the number of components to retain based on the variance threshold
+    num_dimensions = np.argmax(cumulative_variance >= variance_threshold) + 1
 
     # Select the top principal components
     W = eigvecs[:, :num_dimensions]  # Select top components based on desired condition
@@ -241,24 +237,6 @@ def calculate_downsample_size(N_pos, N_neg, desired_percentage):
     return downsample_size_neg
 
 
-def build_poly(x, degree):
-    """Polynomial basis functions for input data x, for j=0 up to j=degree.
-
-    Args:
-        x (np.ndarray, (N,)): array of shape, N is the number of samples.
-        degree (int, optional): degree of the polynomial. Defaults to 1.
-
-    Returns:
-        poly (np.ndarray, (N,D+1)): the computed polynomial features.
-    """
-    poly = None
-    for deg in range(1, degree + 1):
-        if poly is None:
-            poly = np.power(x, deg)
-        else:
-            poly = np.c_[poly, np.power(x, deg)]
-    return poly
-
 
 def batch_iter(y, tx, batch_size, num_batches=1, shuffle=True):
     """
@@ -305,6 +283,8 @@ def build_poly(x, degree):
     Returns:
         poly: numpy array of shape (N,d+1)
     """
+    if degree == 1 :
+        return x
     N, D = x.shape
     poly = np.ones((N, (degree + 1) * D))  # Initialize polynomial feature matrix
 

@@ -89,6 +89,7 @@ def z_score_normalization(x):
 
 def normalize_data(x):
     std_dev = np.std(x, axis=0)
+    mean = np.mean(x, axis=0)
     std_dev[std_dev == 0] = 1  # Prevent division by zero for constant features
-    x = (x - np.mean(x, axis=0)) / std_dev
-    return x
+    x = (x - mean) / std_dev
+    return x, mean, std_dev

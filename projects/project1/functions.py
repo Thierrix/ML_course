@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from stats import f1_score
 from cleaning_data import *
 from implementations import *
-
+import itertools
 
 def predict(tx, w, threshold):
     """
@@ -44,14 +44,14 @@ def cross_validation(
     k_indices,
     k,
     labels,
-    lambda_ = 0,
+    lambda_ = 0.01,
     up_sampling_percentage = 0.2,
     degree = 1,
     variance_threshold = 0.90,
     gamma = 0.5,
     max_iter = 300,
     threshold = 0.5,
-    acceptable_nan_percentage = 0.3,
+    acceptable_nan_percentage = 1,
     outlier_limit = 1,
     nan_handling = 'mean',
 ):
@@ -93,7 +93,9 @@ def cross_validation(
         features,
         median_and_most_probable_class,
         W,
+        mean_pca,
         mean,
+        std_dev
     ) = clean_train_data(
         x_tr,
         y_tr,
@@ -110,8 +112,7 @@ def cross_validation(
 
     # Process the testing data to put it in the same state as the training data
     x_te_cleaned = clean_test_data(
-        x_te, labels, features, median_and_most_probable_class, mean, W, degree
-    )
+        x_te, labels, features, median_and_most_probable_class, mean_pca, W, degree, mean, std_dev)
     num_samples = x_te_cleaned.shape[0]
     tx_te = np.c_[np.ones(num_samples), x_te_cleaned]
 
@@ -129,44 +130,54 @@ def cross_validation(
 
     # Compute the testing F1 score of this fold
     f1_score_te = f1_score(y_te, y_predict)
-
+  
     return f1_score_te
 
-import itertools
 
 
-    
+
 def grid_search_k_fold_logistic(
     y,
     x,
     k_fold,
-    lambdas,
-    gammas,
-    up_sampling_percentages,
-    degrees,
-    variances_threshold,
-    max_iters,
-    decision_threshold,
-    acceptable_nan_percentages,
-    labels,
-    outliers_row_limit,
-    nan_handlers, 
+    hyperparameters,
+    labels
 ):
     """
+    
     Grid search over hyperparameters.
 
     Args:
         y: numpy array of shape=(N,)
         x: numpy array of shape=(N,D)
-        k_fold: K in K-fold, i.e. the fold num
-        lambdas, gammas, up_sampling_percentages, degrees, variances_threshold, max_iters,
-        decision_threshold, acceptable_nan_percentages, outliers_row_limit, nan_handlers:
-        Lists of hyperparameters for tuning.
+        k_fold: K in K-fold, i.e., the fold num
+        hyperparameters: Dictionary of hyperparameters for tuning. Each key contains a list of values to search over.
+        labels: Labels used in cross-validation.
 
     Returns:
         The best hyperparameter values and associated F1 score.
     """
-    print("Beginning grid search with k fold cross validation")
+    # Define default values if not provided in hyperparameters
+    
+    defaults = {
+        "lambdas": [0.001],
+        "gammas": [0.1],
+        "up_sampling_percentages": [0.2],
+        "degrees": [1],
+        "variances_threshold": [0.99],
+        "max_iters": [300],
+        "decision_threshold": [0.5],
+        "acceptable_nan_percentages": [1],
+        "outliers_row_limit": [1],
+        "nan_handlers": ["mean"]
+    }
+    
+    # Update defaults with any provided hyperparameters
+    for key in defaults:
+        if key not in hyperparameters:
+            hyperparameters[key] = defaults[key]
+
+    print("Beginning grid search with k-fold cross-validation")
     y, x = y.copy(), x.copy()
     seed = 12
     # Split data into k-fold indices
@@ -178,26 +189,26 @@ def grid_search_k_fold_logistic(
 
     # Generate all hyperparameter combinations using itertools.product
     all_combinations = itertools.product(
-        gammas,
-        up_sampling_percentages,
-        degrees,
-        variances_threshold,
-        lambdas,
-        max_iters,
-        decision_threshold,
-        acceptable_nan_percentages,
-        outliers_row_limit,
-        nan_handlers,
-        
+        hyperparameters["gammas"],
+        hyperparameters["up_sampling_percentages"],
+        hyperparameters["degrees"],
+        hyperparameters["variances_threshold"],
+        hyperparameters["lambdas"],
+        hyperparameters["max_iters"],
+        hyperparameters["decision_threshold"],
+        hyperparameters["acceptable_nan_percentages"],
+        hyperparameters["outliers_row_limit"],
+        hyperparameters["nan_handlers"],
     )
+    
     print('Grid creation completed')
-    # Total steps calculation and initialization
-    max_steps = len(all_combinations)
+    max_steps = len(list(itertools.product(
+        *[hyperparameters[key] for key in hyperparameters]
+    )))
     step = 1
 
     # Iterate over each hyperparameter combination
     for (
-        model,
         gamma,
         up_sampling_percentage,
         degree,
@@ -211,7 +222,6 @@ def grid_search_k_fold_logistic(
     ) in all_combinations:
         
         total_f1_score_te = 0
-
         # Cross-validation loop
         for k in range(k_fold):
             # Perform cross-validation for the current fold
@@ -220,6 +230,7 @@ def grid_search_k_fold_logistic(
                 x,
                 k_indices,
                 k,
+                labels,
                 lambda_,
                 up_sampling_percentage,
                 degree,
@@ -228,12 +239,9 @@ def grid_search_k_fold_logistic(
                 max_iter,
                 threshold,
                 acceptable_nan_percentage,
-                labels,
                 outlier_limit,
-                nan_handling,
-             
+                nan_handling
             )
-            # Accumulate the F1-scores for test set
             total_f1_score_te += f1_score_te
 
         # Display the progress
@@ -246,25 +254,26 @@ def grid_search_k_fold_logistic(
 
         # Store the corresponding parameter combination
         param_combinations.append(
-            (
-                gamma,
-                up_sampling_percentage,
-                degree,
-                variance_threshold,
-                lambda_,
-                max_iter,
-                threshold,
-                acceptable_nan_percentage,
-                outlier_limit,
-                nan_handling
-            )
+            {
+                "gamma": gamma,
+                "up_sampling_percentage": up_sampling_percentage,
+                "degree": degree,
+                "variance_threshold": variance_threshold,
+                "lambda_": lambda_,
+                "max_iter": max_iter,
+                "threshold": threshold,
+                "acceptable_nan_percentage": acceptable_nan_percentage,
+                "outlier_limit": outlier_limit,
+                "nan_handling": nan_handling
+            }
         )
 
         # Display the parameters for this iteration
         print(
-            f"F1 score of {avg_f1_score_te}, gamma = {gamma}, up_sampling_percentage = {up_sampling_percentage},
-            degree = {degree}, variance_treshold = {variance_threshold}, lambda = {lambda_}, outlier limit = {outlier_limit},
-            max_iter = {max_iter}, threshold = {threshold}, nan percentage = {acceptable_nan_percentage}, nan handling = {nan_handling}"
+            f'F1 score of {avg_f1_score_te}, gamma = {gamma}, up_sampling_percentage = {up_sampling_percentage}, '
+            f'degree = {degree}, variance_threshold = {variance_threshold}, lambda = {lambda_}, '
+            f'outlier limit = {outlier_limit}, max_iter = {max_iter}, threshold = {threshold}, '
+            f'nan percentage = {acceptable_nan_percentage}, nan handling = {nan_handling}'
         )
 
     # Get the best F1 score and corresponding parameters
@@ -272,33 +281,9 @@ def grid_search_k_fold_logistic(
     best_f1_score = f1_score_array[best_index]
     best_params = param_combinations[best_index]
 
-    # Unpack the best parameters
-    (
-        best_gamma,
-        best_up_sampling_percentage,
-        best_degree,
-        best_variance_threshold,
-        best_lambda,
-        best_max_iter,
-        best_threshold,
-        best_nan_percentage,
-        best_outlier_limit,
-        best_nan_handler,
-    ) = best_params
     print("Finished!")
-    return (
-        best_gamma,
-        best_up_sampling_percentage,
-        best_degree,
-        best_variance_threshold,
-        best_lambda,
-        best_max_iter,
-        best_f1_score,
-        best_threshold,
-        best_nan_percentage,
-        best_outlier_limit,
-        best_nan_handler,
-    )
+    return best_params
+
 
 def slice_data(x, y, num_slices, seed):    
     """
