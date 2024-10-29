@@ -65,9 +65,12 @@ def sigmoid(t):
     Returns:
         scalar or numpy array
     """
-    #avoid overflow 
-    
-    return np.exp(t) / (1 + np.exp(t))
+   # Use a numerically stable sigmoid function to avoid overflow
+    return np.where(
+        t >= 0,
+        1 / (1 + np.exp(-t)),
+        np.exp(t) / (1 + np.exp(t))
+    )
 
 
 # compute negative log likelihood loss of a model
