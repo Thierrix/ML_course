@@ -39,6 +39,7 @@ def build_k_indices(y, k_fold, seed = 2):
 
 
 def cross_validation(
+    model,
     y,
     x,
     k_indices,
@@ -58,6 +59,7 @@ def cross_validation(
     """return the loss of ridge regression for a fold corresponding to k_indices
 
     Args:
+        model: string specifying model used for learning
         y: numpy array of shape=(N,)
         x: numpy array of shape=(N,D)
         k_indices:  2D array returned by build_k_indices()
@@ -120,10 +122,33 @@ def cross_validation(
     mean = 0  # Mean of the distribution
     std_dev = 1  # Standard deviation of the distribution
     w_initial = np.random.normal(loc=mean, scale=std_dev, size=tx_tr.shape[1])
+
     # Train the model on this fold
-    w, loss = reg_logistic_regression(
-        y_tr_cleaned, tx_tr, lambda_, w_initial, max_iter, gamma
-    )
+    match model:
+        case "mean_squared_error_gd":
+            w, loss = mean_squared_error_gd(
+                y_tr_cleaned, tx_tr, w_initial, max_iter, gamma
+            )
+        case "mean_squared_error_sgd":
+            w, loss = mean_squared_error_gd(
+                y_tr_cleaned, tx_tr, w_initial, max_iter, gamma
+            )
+        case "ridge_regression":
+            w, loss = ridge_regression(
+                y_tr_cleaned, tx_tr, lambda_
+            )
+        case "least_squares":
+            w, loss = least_squares(
+                y_tr_cleaned, tx_tr
+            )
+        case "logistic_regression":
+            w, loss = logistic_regression(
+                y_tr_cleaned, tx_tr, w_initial, max_iter, gamma
+            )
+        case "reg_logistic_regression":
+            w, loss = reg_logistic_regression(
+                y_tr_cleaned, tx_tr, lambda_, w_initial, max_iter, gamma
+            )
 
     # Predict on the testing set for this fold
     y_predict = predict(tx_te, w, threshold)
@@ -137,6 +162,7 @@ def cross_validation(
 
 
 def grid_search_k_fold_logistic(
+    model,
     y,
     x,
     k_fold,
@@ -145,9 +171,10 @@ def grid_search_k_fold_logistic(
 ):
     """
     
-    Grid search over hyperparameters.
+    Grid search over hyperparameters for selected model.
 
     Args:
+        model: string specifying model used for learning
         y: numpy array of shape=(N,)
         x: numpy array of shape=(N,D)
         k_fold: K in K-fold, i.e., the fold num
@@ -226,6 +253,7 @@ def grid_search_k_fold_logistic(
         for k in range(k_fold):
             # Perform cross-validation for the current fold
             f1_score_te = cross_validation(
+                model,
                 y,
                 x,
                 k_indices,

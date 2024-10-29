@@ -144,7 +144,7 @@ def mean_squared_error_gd(y, tx, initial_w, max_iters, gamma):
         tx: numpy array of shape=(N,D+1)
         initial_w: numpy array of shape=(D+1, ). The initial guess (or the initialization) for the model parameters
         max_iters: a scalar denoting the total number of iterations of GD
-        gamma: a scalar denoting the stepsize
+        gamma: a scalar denoting the learning rate
 
     Returns:
         w: optimal weights, numpy array of shape(D,), D is the number of features.
@@ -181,7 +181,7 @@ def mean_squared_error_sgd(y, tx, initial_w, max_iters, gamma):
         tx: numpy array of shape=(N,D)
         initial_w: numpy array of shape=(D+1, ). The initial guess (or the initialization) for the model parameters
         max_iters: a scalar denoting the total number of iterations of GD
-        gamma: A scalar denoting the stepsize
+        gamma: A scalar denoting the learning rate
     Returns:
         w: optimal weights, numpy array of shape(D+1,), D is the number of features.
         loss: scalar.
@@ -219,7 +219,7 @@ def ridge_regression(y, tx, lambda_):
     Args:
         y: numpy array of shape (N,), N is the number of samples.
         tx: numpy array of shape (N,D+1), D is the number of features.
-        lambda_: scalar.
+        lambda_: scalar, the regularization coefficient.
 
     Returns:
         w: optimal weights, numpy array of shape(D+1,), D is the number of features.
@@ -241,6 +241,8 @@ def logistic_regression(y, tx, initial_w, max_iters, gamma):
         y:  shape=(N, 1)
         tx: shape=(N, D+1)
         w:  shape=(D+1, 1)
+        max_iters: a scalar denoting the total number of iterations of GD
+        gamma: A scalar denoting the learning rate
 
     Returns:
         w, loss where w is a numpy array of shape (D+1,) and loss a scalar
@@ -278,8 +280,9 @@ def reg_logistic_regression(y, tx, lambda_, initial_w, max_iters, gamma):
         y:  shape=(N, 1)
         tx: shape=(N, D+1)
         w:  shape=(D+1, 1)
-        gamma: scalar
-        lambda_: scalar
+        max_iters: a scalar denoting the total number of iterations of GD
+        gamma: a scalar denoting the learning rate
+        lambda_: scalar, scalar, the regularization coefficient
 
     Returns:
         w: shape=(D + 1, 1)
