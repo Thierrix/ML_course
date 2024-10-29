@@ -28,8 +28,10 @@ gammas = [0.45]
 nan_handlers = ['numeric', 'median', 'mean']
 k_fold = 4
 
-best_gamma, best_up_sampling_percentage, best_degree, best_variance_threshold, best_lambda,best_max_iter, best_f1_score, best_threshold, best_nan_percentage, best_outlier_limit, best_nan_handler = grid_search_k_fold(y_tr, x_tr, k_fold, lambdas, gammas, up_sampling_percentages,
-                                                                                                                                                                                     degrees, variances_threshold, max_iters,decision_threshold, acceptable_nan_percentages,
-                                                                                                                                                                                     labels, outliers_row_limit, nan_handlers)
+best_gamma, best_up_sampling_percentage, best_degree, best_variance_threshold,\
+best_lambda,best_max_iter, best_f1_score, best_threshold, best_nan_percentage,\
+best_outlier_limit, best_nan_handler = grid_search_k_fold(y_tr, x_tr, k_fold, lambdas, gammas, up_sampling_percentages,
+                                                        degrees, variances_threshold, max_iters,decision_threshold, acceptable_nan_percentages,
+                                                        labels, outliers_row_limit, nan_handlers)
 
 print(f'The best parameters that yield a f1 score of {best_f1_score} are gamma = {best_gamma}, up_sampling_percentage = {best_up_sampling_percentage}, degree = {best_degree}, variance_treshold = {best_variance_threshold}, lambda = {best_lambda}, threshold = {best_threshold},max_iter = {best_max_iter}, best nan percentage = {best_nan_percentage}')

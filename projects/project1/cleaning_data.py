@@ -77,8 +77,8 @@ def clean_train_data(
 
     #x_before_outliers = x.copy()
     # This is commented for the time being because doing polynomial expansion is super slow
-    # poly_x = build_poly(x_train, degree)
     x, y = remove_outliers(x, y, outliers_row_limit)
+    #x = build_poly(x, degree)
     return x, y, features, median_and_most_probable_class, W, mean_pca, mean, std_dev
 
 
@@ -103,7 +103,7 @@ def clean_test_data(
 
     # Apply the pca given the training PCA
     x = apply_pca_given_components(x, mean_pca, W)
-
+    #x = build_poly(x, degree)
     return x
 
 

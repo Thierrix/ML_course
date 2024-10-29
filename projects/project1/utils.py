@@ -242,19 +242,22 @@ def build_poly(x, degree):
 
     Args:
         x (np.ndarray, (N,)): array of shape, N is the number of samples.
-        degree (int, optional): degree of the polynomial. Defaults to 1.
+        degree (int): degree of the polynomial.
 
     Returns:
         poly (np.ndarray, (N,D+1)): the computed polynomial features.
     """
-    poly = None
+    
+    if degree == 1 :
+        return x
+    # Include the bias term (degree 0)
+    poly = np.ones((x.shape[0], 1))
+    
+    # Loop over the degrees and add features up to 'degree'
     for deg in range(1, degree + 1):
-        if poly is None:
-            poly = np.power(x, deg)
-        else:
-            poly = np.c_[poly, np.power(x, deg)]
+        poly = np.c_[poly, np.power(x, deg)]
+    
     return poly
-
 
 def batch_iter(y, tx, batch_size, num_batches=1, shuffle=True):
     """
