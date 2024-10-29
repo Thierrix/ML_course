@@ -20,7 +20,7 @@ def apply_pca_given_components(X, mean, W):
     return x_pca
 
 
-def create_pca(X, variance_threshold=0.90, num_components=None):
+def create_pca(X, variance_threshold=0.90):
     """
     Create a PCA given the data, either retaining a specified percentage of variance or specifying the number of components.
 
@@ -50,12 +50,8 @@ def create_pca(X, variance_threshold=0.90, num_components=None):
     explained_variance_ratio = eigvals / np.sum(eigvals)
     cumulative_variance = np.cumsum(explained_variance_ratio)
 
-    if num_components is None:
-        # Determine the number of components to retain based on the variance threshold
-        num_dimensions = np.argmax(cumulative_variance >= variance_threshold) + 1
-    else:
-        # Use the specified number of components if provided
-        num_dimensions = num_components
+    # Determine the number of components to retain based on the variance threshold
+    num_dimensions = np.argmax(cumulative_variance >= variance_threshold) + 1
 
     # Select the top principal components
     W = eigvecs[:, :num_dimensions]  # Select top components based on desired condition

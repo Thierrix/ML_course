@@ -67,7 +67,7 @@ def sigmoid(t):
     """
     #avoid overflow 
     
-    return np.where(t > 0, 1/(1 + np.exp(-t)) , np.exp(t) / (1 + np.exp(t)))
+    return np.exp(t) / (1 + np.exp(t))
 
 
 # compute negative log likelihood loss of a model

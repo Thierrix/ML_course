@@ -32,22 +32,12 @@ def clean_train_data(
     variance_threshold,
     acceptable_nan_percentage,
     outliers_row_limit,
-    number_components = None,
     nan_handling="median",
 ):
     """
-    Clean the training data
-    Args :
-        x_train: numpy array of shape=(N, D)
-        y_train: numpy array of shape=(N,)
-        up sampling percentage : The distribution we want for label 1 with respect to label - 1
-        degree: scalar, cf. build_poly()
-        variance_threshold : scalar, cf. pca with this variance_threshold
-        acceptable_nan_percentage : scalar, the percentage nan limit for features to be keeped
-        outlier_limit : scalar, the outliers limit for rows to be keeped
-        nan_handling : scalar, the method we use to replace the nan value
-    Returns :
-        The cleaned x and y along with the associated values for the PCA to be applied again in the same way and the coefficients used for normalization 
+    Cleaning data
+    :param x_train: training data
+    :return: cleaned data
     """
     x = x_train.copy()
     y = y_train.copy()
@@ -78,41 +68,24 @@ def clean_train_data(
 
     x = handle_nan(x, features, median_and_most_probable_class, nan_handling)
 
-
+    
     x, y = upsample_class_1_to_percentage(x, y, up_sampling_percentage)
     # normalize the data
-    std = np.std(x)
-    mean = np.mean(x)
-
-    x = normalize_data(x)
+    x, mean, std_dev = normalize_data(x)
     # Create a pca on the training set, storing the components and mean of this PCA in order to replicate it
-    x, W, mean_pca = create_pca(x, variance_threshold, number_components)
+    x, W, mean_pca = create_pca(x, variance_threshold)
 
     #x_before_outliers = x.copy()
     # This is commented for the time being because doing polynomial expansion is super slow
     # poly_x = build_poly(x_train, degree)
     x, y = remove_outliers(x, y, outliers_row_limit)
-    return x, y, features, median_and_most_probable_class, W, mean_pca, mean, std
+    return x, y, features, median_and_most_probable_class, W, mean_pca, mean, std_dev
 
 
 def clean_test_data(
-    x_te, labels, features, median_and_most_probable_class, mean_pca, W, degree, mean, std
+    x_te, labels, features, median_and_most_probable_class, mean_pca, W, degree, mean, std_dev
 ):
-    """
-    Clean the testing data
-    Args :
-        x_te: numpy array of shape=(N, D)
-        labels : array of strings cf all the labels of the original dataset before cleaning
-        features :  dictionnary cf all the labels of the original dataset after cleaning associated with an index value mapping to columns of x
-        median_and_most_probable_class : dictionnary cf the value for which the nans were changed for each features
-        mean_pca : scalar, the mean use to apply PCA
-        W : vector, the principal components used to apply PCA
-        degree: scalar, cf. build_poly()
-        mean : array, the list of mean used for normalization
-        std : array, the list of std used for normalization
-    Returns :
-        The cleaned x
-    """
+
     x = x_te.copy()
     # Keep only the features we kept on the training set
     mask = [feature in features.keys() for feature in labels]
@@ -126,7 +99,7 @@ def clean_test_data(
         )
 
     # Normalize the testing data independtly from the training set
-    x = (x - mean)/std
+    x = (x - mean) / std_dev
 
     # Apply the pca given the training PCA
     x = apply_pca_given_components(x, mean_pca, W)
@@ -135,6 +108,7 @@ def clean_test_data(
 
 
 def handle_nan(x, features, median_and_most_probable_class, nan_handling):
+
     # Replace NaN in categorical features with the median value
     for feature in features:
         if nan_handling == "median":
