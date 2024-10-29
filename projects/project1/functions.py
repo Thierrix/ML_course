@@ -6,12 +6,20 @@ from implementations import *
 
 
 def predict(tx, w, threshold):
+    """
+    Predict the associated labels for every data points given the weights vector and the data points 
+    Args:
+        tx : numpy array of shape=(N,D + 1)
+        w : numpy array of shape=(D+1, )
+        threshold : scalar, the threshold for predicting cf. Prob(y_i = 1 / W,x_i)  > threshold -> y = 1
+    Returns ;
+        The predicted values, either 1 or -1 given the weights vector w, and the data points x 
+    """
     return np.where(sigmoid(tx @ w) >= threshold, 1, -1)
 
 
-def build_k_indices(y, k_fold, seed):
+def build_k_indices(y, k_fold, seed = 2):
     """build k indices for k-fold.
-
     Args:
         y:      shape=(N,)
         k_fold: K in K-fold, i.e. the fold num
@@ -19,10 +27,6 @@ def build_k_indices(y, k_fold, seed):
 
     Returns:
         A 2D array of shape=(k_fold, N/k_fold) that indicates the data indices for each fold
-
-    >>> build_k_indices(np.array([1., 2., 3., 4.]), 2, 1)
-    array([[3, 2],
-           [0, 1]])
     """
 
     num_row = y.shape[0]
@@ -39,31 +43,37 @@ def cross_validation(
     x,
     k_indices,
     k,
-    lambda_,
-    up_sampling_percentage,
-    degree,
-    variance_threshold,
-    gamma,
-    max_iter,
-    threshold,
-    acceptable_nan_percentage,
     labels,
-    outlier_limit,
-    nan_handling,
+    lambda_ = 0,
+    up_sampling_percentage = 0.2,
+    degree = 1,
+    variance_threshold = 0.90,
+    gamma = 0.5,
+    max_iter = 300,
+    threshold = 0.5,
+    acceptable_nan_percentage = 0.3,
+    outlier_limit = 1,
+    nan_handling = 'mean',
 ):
     """return the loss of ridge regression for a fold corresponding to k_indices
 
     Args:
-        y:          shape=(N,)
-        x:          shape=(N,)
+        y: numpy array of shape=(N,)
+        x: numpy array of shape=(N,D)
         k_indices:  2D array returned by build_k_indices()
         k:          scalar, the k-th fold (N.B.: not to confused with k_fold which is the fold nums)
-        lambda_:    scalar, cf. ridge_regression()
+        lambda_:    scalar, cf. penalized logistic regression
+        up sampling percentage : The distribution we want for label 1 with respect to label - 1
         degree:     scalar, cf. build_poly()
-
+        variance_threshold : scalar, cf. pca with this variance_threshold
+        gamma : scalar, the learning rate
+        max_iter : scalar, the max number of iterations
+        threshold : scalar, the threshold for predicting cf Prob(y_i = 1 / W,x_i)  > threshold -> y = 1
+        acceptable_nan_percentage : scalar, the percentage nan limit for features to be keeped
+        outlier_limit : scalar, the outliers limit for rows to be keeped
+        nan_handling : scalar, the method we use to replace the nan value
     Returns:
-        train and test root mean square errors rmse = sqrt(2 mse)
-
+        The f1_score for this fold on the testing fold trained on the training fold
     """
 
     # Test data from the k-th fold
@@ -125,7 +135,8 @@ def cross_validation(
 import itertools
 
 
-def grid_search_k_fold(
+    
+def grid_search_k_fold_logistic(
     y,
     x,
     k_fold,
@@ -139,14 +150,15 @@ def grid_search_k_fold(
     acceptable_nan_percentages,
     labels,
     outliers_row_limit,
-    nan_handlers,
+    nan_handlers, 
 ):
     """
-    Cross-validation over regularisation parameter lambda and other hyperparameters.
+    Grid search over hyperparameters.
 
     Args:
-        y, x: data and labels.
-        k_fold: integer, the number of folds.
+        y: numpy array of shape=(N,)
+        x: numpy array of shape=(N,D)
+        k_fold: K in K-fold, i.e. the fold num
         lambdas, gammas, up_sampling_percentages, degrees, variances_threshold, max_iters,
         decision_threshold, acceptable_nan_percentages, outliers_row_limit, nan_handlers:
         Lists of hyperparameters for tuning.
@@ -176,24 +188,16 @@ def grid_search_k_fold(
         acceptable_nan_percentages,
         outliers_row_limit,
         nan_handlers,
+        
     )
+    print('Grid creation completed')
     # Total steps calculation and initialization
-    max_steps = (
-        len(lambdas)
-        * len(gammas)
-        * len(up_sampling_percentages)
-        * len(degrees)
-        * len(variances_threshold)
-        * len(max_iters)
-        * len(decision_threshold)
-        * len(acceptable_nan_percentages)
-        * len(outliers_row_limit)
-        * len(nan_handlers)
-    )
+    max_steps = len(all_combinations)
     step = 1
 
     # Iterate over each hyperparameter combination
     for (
+        model,
         gamma,
         up_sampling_percentage,
         degree,
@@ -205,6 +209,7 @@ def grid_search_k_fold(
         outlier_limit,
         nan_handling,
     ) in all_combinations:
+        
         total_f1_score_te = 0
 
         # Cross-validation loop
@@ -226,6 +231,7 @@ def grid_search_k_fold(
                 labels,
                 outlier_limit,
                 nan_handling,
+             
             )
             # Accumulate the F1-scores for test set
             total_f1_score_te += f1_score_te
@@ -250,13 +256,15 @@ def grid_search_k_fold(
                 threshold,
                 acceptable_nan_percentage,
                 outlier_limit,
-                nan_handling,
+                nan_handling
             )
         )
 
         # Display the parameters for this iteration
         print(
-            f"F1 score of {avg_f1_score_te} for gamma = {gamma}, up_sampling_percentage = {up_sampling_percentage}, degree = {degree}, variance_treshold = {variance_threshold}, lambda = {lambda_}, outlier limit = {outlier_limit}, max_iter = {max_iter}, threshold = {threshold}, nan percentage = {acceptable_nan_percentage}, nan handling = {nan_handling}"
+            f"F1 score of {avg_f1_score_te}, gamma = {gamma}, up_sampling_percentage = {up_sampling_percentage},
+            degree = {degree}, variance_treshold = {variance_threshold}, lambda = {lambda_}, outlier limit = {outlier_limit},
+            max_iter = {max_iter}, threshold = {threshold}, nan percentage = {acceptable_nan_percentage}, nan handling = {nan_handling}"
         )
 
     # Get the best F1 score and corresponding parameters
@@ -292,14 +300,26 @@ def grid_search_k_fold(
         best_nan_handler,
     )
 
-def slice_data(x_train, y_train, num_slices, seed):    # Determine the size of each slice for both training and test sets
+def slice_data(x, y, num_slices, seed):    
+    """
+    Determine the size of each slice for x and y
+
+    Args :
+        x : numpy array of shape=(N,D)
+        y : numpy array of shape=(N,)
+        num_slices : scalar, the number of slices to do on x and y
+        seed:  the random seed
+    Returns :
+        A array containings the slices for both x and y
+    
+    """
      # Shuffle indices for training data
     np.random.seed(seed)
-    train_indices = np.random.permutation(len(x_train))
+    train_indices = np.random.permutation(len(x))
 
-    x_train_shuffled = x_train[train_indices]
-    y_train_shuffled = y_train[train_indices]
-    train_slice_size = len(x_train) // num_slices
+    x_train_shuffled = x[train_indices]
+    y_train_shuffled = y[train_indices]
+    train_slice_size = len(x) // num_slices
     x_train_slices = [x_train_shuffled[i * train_slice_size: (i + 1) * train_slice_size] for i in range(num_slices)]
     y_train_slices = [y_train_shuffled[i * train_slice_size: (i + 1) * train_slice_size] for i in range(num_slices)]
     

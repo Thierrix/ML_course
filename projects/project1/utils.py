@@ -20,13 +20,14 @@ def apply_pca_given_components(X, mean, W):
     return x_pca
 
 
-def create_pca(X, variance_threshold=0.90):
+def create_pca(X, variance_threshold=0.90, num_components=None):
     """
-    Create a PCA given the data, retaining a specified percentage of variance.
+    Create a PCA given the data, either retaining a specified percentage of variance or specifying the number of components.
 
     Args :
         X : data
         variance_threshold: the desired amount of variance to retain (default 90%)
+        num_components: the desired number of principal components (default None, use variance threshold)
 
     Returns :
         x_pca : PCA applied on the data, X
@@ -49,11 +50,15 @@ def create_pca(X, variance_threshold=0.90):
     explained_variance_ratio = eigvals / np.sum(eigvals)
     cumulative_variance = np.cumsum(explained_variance_ratio)
 
-    # Determine the number of components to retain based on the variance threshold
-    num_dimensions = np.argmax(cumulative_variance >= variance_threshold) + 1
+    if num_components is None:
+        # Determine the number of components to retain based on the variance threshold
+        num_dimensions = np.argmax(cumulative_variance >= variance_threshold) + 1
+    else:
+        # Use the specified number of components if provided
+        num_dimensions = num_components
 
     # Select the top principal components
-    W = eigvecs[:, :num_dimensions]  # Select top components based on variance retention
+    W = eigvecs[:, :num_dimensions]  # Select top components based on desired condition
 
     # Project the data onto the selected principal components
     x_pca = np.dot(x_tilde, W)
@@ -206,8 +211,7 @@ def split_data(x, y, ratio, seed=1):
         y_tr: numpy array containing the train labels.
         y_te: numpy array containing the test labels.
 
-    >>> split_data(np.arange(13), np.arange(13), 0.8, 1)
-    (array([ 2,  3,  4, 10,  1,  6,  0,  7, 12,  9]), array([ 8, 11,  5]), array([ 2,  3,  4, 10,  1,  6,  0,  7, 12,  9]), array([ 8, 11,  5]))
+
     """
 
     # set seed
@@ -245,7 +249,7 @@ def build_poly(x, degree):
         degree (int, optional): degree of the polynomial. Defaults to 1.
 
     Returns:
-        poly (np.ndarray, (N,d+1)): the computed polynomial features.
+        poly (np.ndarray, (N,D+1)): the computed polynomial features.
     """
     poly = None
     for deg in range(1, degree + 1):
@@ -258,36 +262,11 @@ def build_poly(x, degree):
 
 def batch_iter(y, tx, batch_size, num_batches=1, shuffle=True):
     """
-    Generate a minibatch iterator for a dataset.ÅÅÅÅ
+    Generate a minibatch iterator for a dataset.
     Takes as input two iterables (here the output desired values 'y' and the input data 'tx')
     Outputs an iterator which gives mini-batches of `batch_size` matching elements from `y` and `tx`.
     Data can be randomly shuffled to avoid ordering in the original data messing with the randomness of the minibatches.
 
-    Example:
-
-     Number of batches = 9
-
-     Batch size = 7                              Remainder = 3
-     v     v                                         v v
-    |-------|-------|-------|-------|-------|-------|---|
-        0       7       14      21      28      35   max batches = 6
-
-    If shuffle is False, the returned batches are the ones started from the indexes:
-    0, 7, 14, 21, 28, 35, 0, 7, 14
-
-    If shuffle is True, the returned batches start in:
-    7, 28, 14, 35, 14, 0, 21, 28, 7
-
-    To prevent the remainder datapoints from ever being taken into account, each of the shuffled indexes is added a random amount
-    8, 28, 16, 38, 14, 0, 22, 28, 9
-
-    This way batches might overlap, but the returned batches are slightly more representative.
-
-    Disclaimer: To keep this function simple, individual datapoints are not shuffled. For a more random result consider using a batch_size of 1.
-
-    Example of use :
-    for minibatch_y, minibatch_tx in batch_iter(y, tx, 32):
-        <DO-SOMETHING>
     """
     data_size = len(y)  # NUmber of data points.
     batch_size = min(data_size, batch_size)  # Limit the possible size of the batch.
@@ -325,10 +304,6 @@ def build_poly(x, degree):
 
     Returns:
         poly: numpy array of shape (N,d+1)
-
-    >>> build_poly(np.array([0.0, 1.5]), 2)
-    array([[1.  , 0.  , 0.  ],
-           [1.  , 1.5 , 2.25]])
     """
     N, D = x.shape
     poly = np.ones((N, (degree + 1) * D))  # Initialize polynomial feature matrix
