@@ -44,14 +44,14 @@ def cross_validation(
     k_indices,
     k,
     labels,
-    lambda_ = 0,
+    lambda_ = 0.01,
     up_sampling_percentage = 0.2,
     degree = 1,
     variance_threshold = 0.90,
     gamma = 0.5,
     max_iter = 300,
     threshold = 0.5,
-    acceptable_nan_percentage = 0.3,
+    acceptable_nan_percentage = 1,
     outlier_limit = 1,
     nan_handling = 'mean',
 ):
@@ -162,13 +162,13 @@ def grid_search_k_fold_logistic(
     defaults = {
         "lambdas": [0.001],
         "gammas": [0.1],
-        "up_sampling_percentages": [0.5],
-        "degrees": [2],
-        "variances_threshold": [0.01],
-        "max_iters": [1000],
+        "up_sampling_percentages": [0.2],
+        "degrees": [1],
+        "variances_threshold": [0.99],
+        "max_iters": [300],
         "decision_threshold": [0.5],
-        "acceptable_nan_percentages": [0.1],
-        "outliers_row_limit": [3.0],
+        "acceptable_nan_percentages": [1],
+        "outliers_row_limit": [1],
         "nan_handlers": ["mean"]
     }
     

@@ -237,27 +237,6 @@ def calculate_downsample_size(N_pos, N_neg, desired_percentage):
     return downsample_size_neg
 
 
-def build_poly(x, degree):
-    """Polynomial basis functions for input data x, for j=0 up to j=degree.
-
-    Args:
-        x (np.ndarray, (N,)): array of shape, N is the number of samples.
-        degree (int): degree of the polynomial.
-
-    Returns:
-        poly (np.ndarray, (N,D+1)): the computed polynomial features.
-    """
-    
-    if degree == 1 :
-        return x
-    # Include the bias term (degree 0)
-    poly = np.ones((x.shape[0], 1))
-    
-    # Loop over the degrees and add features up to 'degree'
-    for deg in range(1, degree + 1):
-        poly = np.c_[poly, np.power(x, deg)]
-    
-    return poly
 
 def batch_iter(y, tx, batch_size, num_batches=1, shuffle=True):
     """
@@ -304,6 +283,8 @@ def build_poly(x, degree):
     Returns:
         poly: numpy array of shape (N,d+1)
     """
+    if degree == 1 :
+        return x
     N, D = x.shape
     poly = np.ones((N, (degree + 1) * D))  # Initialize polynomial feature matrix
 
