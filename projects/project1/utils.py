@@ -75,6 +75,8 @@ def upsample_class_1_to_percentage(X, y, desired_percentage):
             y_upsampled : y upsampled to attain the desired percentage
     """
     # Find the indices of class 0 (majority class) and class 1 (minority class)
+    if desired_percentage == 0 :
+        return X, y
     initial_percentage = np.sum(y == 1)/y.shape[0]
     assert(desired_percentage >= initial_percentage and desired_percentage <= 1), "The desired percentage must be higher than the initial percentage"
 
@@ -273,24 +275,23 @@ def batch_iter(y, tx, batch_size, num_batches=1, shuffle=True):
         yield y[start_index:end_index], tx[start_index:end_index]
 
 
+
 def build_poly(x, degree):
-    """polynomial basis functions for input data x, for j=0 up to j=degree.
+    """Polynomial basis functions for input data x, for j=0 up to j=degree.
 
     Args:
-        x: numpy array of shape (N,D), N is the number of samples and D the number of features
+        x: numpy array of shape (N, D), N is the number of samples and D the number of features
         degree: integer.
 
     Returns:
-        poly: numpy array of shape (N,d+1)
+        poly: numpy array of shape (N, (D * degree) + 1)
     """
-    if degree == 1 :
-        return x
-    N, D = x.shape
-    poly = np.ones((N, (degree + 1) * D))  # Initialize polynomial feature matrix
+    # Use a list comprehension to generate each power for every feature
+    poly_features = [np.ones((x.shape[0], 1))]  # Start with the bias term (degree 0)
+    for d in range(1, degree + 1):
+        poly_features.append(np.power(x, d))  # Generate powers of x from 1 to degree
 
-    # Expand each feature in X to its powers from 0 to the given degree
-    for i in range(D):
-        for j in range(degree + 1):
-            poly[:, i * (degree + 1) + j] = np.power(x[:, i], j)
-
+    # Horizontally stack the features to form the final polynomial feature matrix
+    poly = np.hstack(poly_features)
+    
     return poly
