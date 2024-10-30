@@ -204,7 +204,7 @@ def grid_search_k_fold_logistic(
         if key not in hyperparameters:
             hyperparameters[key] = defaults[key]
 
-    print("Beginning grid search with k-fold cross-validation")
+    print(f'Beginning grid search with k-fold cross-validation for {model}')
     y, x = y.copy(), x.copy()
     seed = 12
     # Split data into k-fold indices

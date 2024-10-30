@@ -27,15 +27,15 @@ x_tr, x_te, y_tr, y_te = split_data(x_train, y_train, 0.8, seed= 2)
 
 # Define hyperparameters in a dictionary
 hyperparameters = {
-    "lambdas": [0.01, 1, 0.1],
-    "up_sampling_percentages": [0.2, 0.3],
-    "degrees": [1, 2],
-    "variances_threshold": [0.99, 0.90],
-    "decision_threshold": [0.48, 0.5],
-    "acceptable_nan_percentages": [1, 0.8],
-    "max_iters": [300, 1000],
-    "outliers_row_limit": [0.7, 1],
-    "gammas": [0.01, 0.05],
+    "lambdas": [2],
+    "up_sampling_percentages": [0.4],
+    "degrees": [4, 8],
+    "variances_threshold": [0.99, 0.95],
+    "decision_threshold": [0.55, 0.6, 0.53],
+    "acceptable_nan_percentages": [1],
+    "max_iters": [1],
+    "outliers_row_limit": [1],
+    "gammas": [0.9, 1],
     "nan_handlers": ['numeric', 'mean', 'median']
 }
 
@@ -58,4 +58,4 @@ best_nan_percentage = best_params['acceptable_nan_percentage']
 best_outlier_limit = best_params['outlier_limit']
 best_nan_handler = best_params['nan_handling']
 
-print(f'The best parameters are gamma = {best_gamma}, up_sampling_percentage = {best_up_sampling_percentage}, degree = {best_degree}, variance_treshold = {best_variance_threshold}, lambda = {best_lambda}, threshold = {best_threshold},max_iter = {best_max_iter}, best nan percentage = {best_nan_percentage}')
+print(f'The best parameters are gamma = {best_gamma}, best_nan_handling = {best_nan_handler},up_sampling_percentage = {best_up_sampling_percentage}, degree = {best_degree}, variance_treshold = {best_variance_threshold}, lambda = {best_lambda}, threshold = {best_threshold},max_iter = {best_max_iter}, best nan percentage = {best_nan_percentage}')
