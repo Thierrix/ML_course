@@ -1,886 +1,19 @@
 {
-    "iteration": 3,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.5,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 1,
-        "nan_handling": "median"
-    },
-    "f1_score": 0.13219323958229212
-}
-{
-    "iteration": 4,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.5,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.0
-}
-{
-    "iteration": 5,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.5,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "mean"
-    },
-    "f1_score": 0.13238128694497464
-}
-{
-    "iteration": 6,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.5,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "median"
-    },
-    "f1_score": 0.1397831030512167
-}
-{
-    "iteration": 7,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.5,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 0.8,
-        "outlier_limit": 1,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.0
-}
-{
-    "iteration": 8,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.5,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 0.8,
-        "outlier_limit": 1,
-        "nan_handling": "mean"
-    },
-    "f1_score": 0.14835912011688615
-}
-{
-    "iteration": 9,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.5,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 0.8,
-        "outlier_limit": 1,
-        "nan_handling": "median"
-    },
-    "f1_score": 0.14120005350426348
-}
-{
-    "iteration": 10,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.5,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 0.8,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.0
-}
-{
-    "iteration": 11,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.5,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 0.8,
-        "outlier_limit": 0.7,
-        "nan_handling": "mean"
-    },
-    "f1_score": 0.1399008197422556
-}
-{
-    "iteration": 12,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.5,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 0.8,
-        "outlier_limit": 0.7,
-        "nan_handling": "median"
-    },
-    "f1_score": 0.13331335610354095
-}
-{
-    "iteration": 13,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.5,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.55,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 1,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.0
-}
-{
-    "iteration": 1,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.5,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 1,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.0
-}
-{
-    "iteration": 2,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.5,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 1,
-        "nan_handling": "mean"
-    },
-    "f1_score": 0.12348021158572406
-}
-{
-    "iteration": 1,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.01,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 1,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.1624227666643155
-}
-{
-    "iteration": 2,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.01,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 1,
-        "nan_handling": "median"
-    },
-    "f1_score": 0.16629937829253255
-}
-{
-    "iteration": 3,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.01,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.16233807231883357
-}
-{
-    "iteration": 4,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.01,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "median"
-    },
-    "f1_score": 0.17225553236726715
-}
-{
-    "iteration": 5,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.01,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 0.8,
-        "outlier_limit": 1,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.16972698514226014
-}
-{
-    "iteration": 6,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.01,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 0.8,
-        "outlier_limit": 1,
-        "nan_handling": "median"
-    },
-    "f1_score": 0.16852263054521055
-}
-{
-    "iteration": 7,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.01,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 0.8,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.1654274007273224
-}
-{
-    "iteration": 8,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.01,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 0.8,
-        "outlier_limit": 0.7,
-        "nan_handling": "median"
-    },
-    "f1_score": 0.17482746195298027
-}
-{
-    "iteration": 9,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.01,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.55,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 1,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.16840507453589257
-}
-{
-    "iteration": 10,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.01,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.55,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 1,
-        "nan_handling": "median"
-    },
-    "f1_score": 0.17096952246463223
-}
-{
-    "iteration": 11,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.01,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.55,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.16158297970785207
-}
-{
-    "iteration": 12,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.01,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.55,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "median"
-    },
-    "f1_score": 0.17226811370027367
-}
-{
-    "iteration": 13,
-    "params": {
-        "model": "mean_squared_error_sgd",
-        "gamma": 0.01,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 3,
-        "max_iter": 300,
-        "threshold": 0.55,
-        "acceptable_nan_percentage": 0.8,
-        "outlier_limit": 1,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.16907161476148674
-}
-{
-    "iteration": 1,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.01,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 1,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.16400505249428254
-}
-{
-    "iteration": 2,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.01,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 1,
-        "nan_handling": "median"
-    },
-    "f1_score": 0.1682033690558798
-}
-{
-    "iteration": 3,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.01,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.16379641382822985
-}
-{
-    "iteration": 4,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.01,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "median"
-    },
-    "f1_score": 0.1860418906314895
-}
-{
-    "iteration": 5,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.01,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 0.8,
-        "outlier_limit": 1,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.19475523890689733
-}
-{
-    "iteration": 6,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.01,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 0.8,
-        "outlier_limit": 1,
-        "nan_handling": "median"
-    },
-    "f1_score": 0.1812745941447585
-}
-{
-    "iteration": 7,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.01,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 0.8,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.1635652941761464
-}
-{
-    "iteration": 8,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.01,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 0.8,
-        "outlier_limit": 0.7,
-        "nan_handling": "median"
-    },
-    "f1_score": 0.19175741875949898
-}
-{
-    "iteration": 9,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.01,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.55,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 1,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.18142914243322308
-}
-{
-    "iteration": 10,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.01,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.55,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 1,
-        "nan_handling": "median"
-    },
-    "f1_score": 0.1627284926009438
-}
-{
-    "iteration": 11,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.01,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.55,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.17407552754706188
-}
-{
-    "iteration": 12,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.01,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.55,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "median"
-    },
-    "f1_score": 0.18224973960950375
-}
-{
     "iteration": 1,
     "params": {
         "model": "reg_logistic_regression",
         "gamma": 0.5,
         "up_sampling_percentage": 0.2,
         "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 1,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.4052764574298717
-}
-{
-    "iteration": 2,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.5,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 1,
-        "nan_handling": "median"
-    },
-    "f1_score": 0.398420507056748
-}
-{
-    "iteration": 3,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.5,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.4058162442455322
-}
-{
-    "iteration": 4,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.5,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "median"
-    },
-    "f1_score": 0.39724377474983796
-}
-{
-    "iteration": 1,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.6,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.995,
+        "variance_threshold": 0.999,
         "lambda_": 0.02,
-        "max_iter": 300,
-        "threshold": 0.46,
+        "max_iter": 1000,
+        "threshold": 0.43,
         "acceptable_nan_percentage": 1,
         "outlier_limit": 0.7,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.3510724978284797
-}
-{
-    "iteration": 1,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.6,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.995,
-        "lambda_": 0.001,
-        "max_iter": 300,
-        "threshold": 0.46,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.4010437948845204
-}
-{
-    "iteration": 1,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.6,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.995,
-        "lambda_": 0.008,
-        "max_iter": 300,
-        "threshold": 0.46,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.39166397808216025
-}
-{
-    "iteration": 2,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.6,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.995,
-        "lambda_": 0.008,
-        "max_iter": 300,
-        "threshold": 0.46,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.6,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.3885560032948393
-}
-{
-    "iteration": 3,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.6,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.995,
-        "lambda_": 0.008,
-        "max_iter": 300,
-        "threshold": 0.4,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.3976840554830334
-}
-{
-    "iteration": 4,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.6,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.995,
-        "lambda_": 0.008,
-        "max_iter": 300,
-        "threshold": 0.4,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.6,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.3974182558744579
-}
-{
-    "iteration": 5,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.6,
-        "up_sampling_percentage": 0.25,
-        "degree": 1,
-        "variance_threshold": 0.995,
-        "lambda_": 0.008,
-        "max_iter": 300,
-        "threshold": 0.46,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.3868687334059405
-}
-{
-    "iteration": 6,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.6,
-        "up_sampling_percentage": 0.25,
-        "degree": 1,
-        "variance_threshold": 0.995,
-        "lambda_": 0.008,
-        "max_iter": 300,
-        "threshold": 0.46,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.6,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.38686510537120455
-}
-{
-    "iteration": 7,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.6,
-        "up_sampling_percentage": 0.25,
-        "degree": 1,
-        "variance_threshold": 0.995,
-        "lambda_": 0.008,
-        "max_iter": 300,
-        "threshold": 0.4,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.37765302562305564
-}
-{
-    "iteration": 8,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.6,
-        "up_sampling_percentage": 0.25,
-        "degree": 1,
-        "variance_threshold": 0.995,
-        "lambda_": 0.008,
-        "max_iter": 300,
-        "threshold": 0.4,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.6,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.37484760761969516
+    "f1_score": 0.3922688557766795
 }
 {
     "iteration": 1,
@@ -889,185 +22,83 @@
         "gamma": 0.5,
         "up_sampling_percentage": 0.2,
         "degree": 1,
-        "variance_threshold": 0.995,
+        "variance_threshold": 0.999,
         "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.46,
+        "max_iter": 1000,
+        "threshold": 0.45,
         "acceptable_nan_percentage": 1,
         "outlier_limit": 0.7,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.40799657868873135
+    "f1_score": 0.41248834324127803
 }
 {
     "iteration": 2,
     "params": {
         "model": "reg_logistic_regression",
         "gamma": 0.5,
-        "up_sampling_percentage": 0.25,
-        "degree": 1,
-        "variance_threshold": 0.995,
-        "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.46,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.40204099207092264
-}
-{
-    "iteration": 1,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.5,
         "up_sampling_percentage": 0.2,
         "degree": 1,
-        "variance_threshold": 0.995,
+        "variance_threshold": 0.999,
         "lambda_": 0.02,
-        "max_iter": 300,
-        "threshold": 0.46,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.4009008135072842
-}
-{
-    "iteration": 2,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.5,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.995,
-        "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.46,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.4084139554779278
-}
-{
-    "iteration": 1,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.5,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.995,
-        "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.46,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.40799657868873135
-}
-{
-    "iteration": 2,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.5,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.995,
-        "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.4047346050205707
-}
-{
-    "iteration": 3,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.5,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.995,
-        "lambda_": 0.01,
-        "max_iter": 500,
-        "threshold": 0.46,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.4083832972357748
-}
-{
-    "iteration": 4,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.5,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.995,
-        "lambda_": 0.01,
-        "max_iter": 500,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.40489378208200577
-}
-{
-    "iteration": 1,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.5,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.46,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.4077270202139547
-}
-{
-    "iteration": 2,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.5,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.47,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.40475113638712373
-}
-{
-    "iteration": 3,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.5,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.01,
-        "max_iter": 300,
+        "max_iter": 1000,
         "threshold": 0.45,
         "acceptable_nan_percentage": 1,
         "outlier_limit": 0.7,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.4116246664332583
+    "f1_score": 0.3942494720038386
+}
+{
+    "iteration": 1,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.01,
+        "max_iter": 1000,
+        "threshold": 0.45,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.41248834324127803
+}
+{
+    "iteration": 2,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.01,
+        "max_iter": 1000,
+        "threshold": 0.45,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.65,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.40979839961004483
+}
+{
+    "iteration": 3,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.01,
+        "max_iter": 1000,
+        "threshold": 0.5,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.39552399099334334
 }
 {
     "iteration": 4,
@@ -1076,15 +107,15 @@
         "gamma": 0.5,
         "up_sampling_percentage": 0.2,
         "degree": 1,
-        "variance_threshold": 0.99,
+        "variance_threshold": 0.999,
         "lambda_": 0.01,
-        "max_iter": 500,
-        "threshold": 0.46,
+        "max_iter": 1000,
+        "threshold": 0.5,
         "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
+        "outlier_limit": 0.65,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.4076823885727012
+    "f1_score": 0.39425557007014433
 }
 {
     "iteration": 5,
@@ -1093,15 +124,15 @@
         "gamma": 0.5,
         "up_sampling_percentage": 0.2,
         "degree": 1,
-        "variance_threshold": 0.99,
+        "variance_threshold": 0.999,
         "lambda_": 0.01,
-        "max_iter": 500,
+        "max_iter": 1000,
         "threshold": 0.47,
         "acceptable_nan_percentage": 1,
         "outlier_limit": 0.7,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.40483992710260813
+    "f1_score": 0.40501675087536865
 }
 {
     "iteration": 6,
@@ -1110,15 +141,15 @@
         "gamma": 0.5,
         "up_sampling_percentage": 0.2,
         "degree": 1,
-        "variance_threshold": 0.99,
+        "variance_threshold": 0.999,
         "lambda_": 0.01,
-        "max_iter": 500,
-        "threshold": 0.45,
+        "max_iter": 1000,
+        "threshold": 0.47,
         "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
+        "outlier_limit": 0.65,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.4104141798641651
+    "f1_score": 0.40686416031030437
 }
 {
     "iteration": 7,
@@ -1127,15 +158,15 @@
         "gamma": 0.5,
         "up_sampling_percentage": 0.2,
         "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.015,
-        "max_iter": 300,
-        "threshold": 0.46,
+        "variance_threshold": 0.999,
+        "lambda_": 0.02,
+        "max_iter": 1000,
+        "threshold": 0.45,
         "acceptable_nan_percentage": 1,
         "outlier_limit": 0.7,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.39801621957534683
+    "f1_score": 0.39800466977982435
 }
 {
     "iteration": 8,
@@ -1144,15 +175,15 @@
         "gamma": 0.5,
         "up_sampling_percentage": 0.2,
         "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.015,
-        "max_iter": 300,
-        "threshold": 0.47,
+        "variance_threshold": 0.999,
+        "lambda_": 0.02,
+        "max_iter": 1000,
+        "threshold": 0.45,
         "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
+        "outlier_limit": 0.65,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.3982409499549021
+    "f1_score": 0.3915957482036243
 }
 {
     "iteration": 9,
@@ -1161,15 +192,15 @@
         "gamma": 0.5,
         "up_sampling_percentage": 0.2,
         "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.015,
-        "max_iter": 300,
-        "threshold": 0.45,
+        "variance_threshold": 0.999,
+        "lambda_": 0.02,
+        "max_iter": 1000,
+        "threshold": 0.5,
         "acceptable_nan_percentage": 1,
         "outlier_limit": 0.7,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.4063491737774566
+    "f1_score": 0.3818169516106059
 }
 {
     "iteration": 10,
@@ -1178,15 +209,15 @@
         "gamma": 0.5,
         "up_sampling_percentage": 0.2,
         "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.015,
-        "max_iter": 500,
-        "threshold": 0.46,
+        "variance_threshold": 0.999,
+        "lambda_": 0.02,
+        "max_iter": 1000,
+        "threshold": 0.5,
         "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
+        "outlier_limit": 0.65,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.4018799356814124
+    "f1_score": 0.38392442653795755
 }
 {
     "iteration": 11,
@@ -1195,15 +226,15 @@
         "gamma": 0.5,
         "up_sampling_percentage": 0.2,
         "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.015,
-        "max_iter": 500,
+        "variance_threshold": 0.999,
+        "lambda_": 0.02,
+        "max_iter": 1000,
         "threshold": 0.47,
         "acceptable_nan_percentage": 1,
         "outlier_limit": 0.7,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.4006610623791231
+    "f1_score": 0.39339733133558263
 }
 {
     "iteration": 12,
@@ -1212,15 +243,15 @@
         "gamma": 0.5,
         "up_sampling_percentage": 0.2,
         "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.015,
-        "max_iter": 500,
-        "threshold": 0.45,
+        "variance_threshold": 0.999,
+        "lambda_": 0.02,
+        "max_iter": 1000,
+        "threshold": 0.47,
         "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
+        "outlier_limit": 0.65,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.4016270017382969
+    "f1_score": 0.3845982261043948
 }
 {
     "iteration": 13,
@@ -1230,14 +261,14 @@
         "up_sampling_percentage": 0.2,
         "degree": 1,
         "variance_threshold": 0.999,
-        "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.46,
+        "lambda_": 0.05,
+        "max_iter": 1000,
+        "threshold": 0.45,
         "acceptable_nan_percentage": 1,
         "outlier_limit": 0.7,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.4095604120780733
+    "f1_score": 0.34105302214789734
 }
 {
     "iteration": 14,
@@ -1247,14 +278,14 @@
         "up_sampling_percentage": 0.2,
         "degree": 1,
         "variance_threshold": 0.999,
-        "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.47,
+        "lambda_": 0.05,
+        "max_iter": 1000,
+        "threshold": 0.45,
         "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
+        "outlier_limit": 0.65,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.40634435693040644
+    "f1_score": 0.3368074483996798
 }
 {
     "iteration": 15,
@@ -1264,14 +295,14 @@
         "up_sampling_percentage": 0.2,
         "degree": 1,
         "variance_threshold": 0.999,
-        "lambda_": 0.01,
-        "max_iter": 300,
-        "threshold": 0.45,
+        "lambda_": 0.05,
+        "max_iter": 1000,
+        "threshold": 0.5,
         "acceptable_nan_percentage": 1,
         "outlier_limit": 0.7,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.41092908952180307
+    "f1_score": 0.32883695359877074
 }
 {
     "iteration": 16,
@@ -1281,14 +312,14 @@
         "up_sampling_percentage": 0.2,
         "degree": 1,
         "variance_threshold": 0.999,
-        "lambda_": 0.01,
-        "max_iter": 500,
-        "threshold": 0.46,
+        "lambda_": 0.05,
+        "max_iter": 1000,
+        "threshold": 0.5,
         "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
+        "outlier_limit": 0.65,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.40990696186867354
+    "f1_score": 0.34040062670781435
 }
 {
     "iteration": 17,
@@ -1298,14 +329,14 @@
         "up_sampling_percentage": 0.2,
         "degree": 1,
         "variance_threshold": 0.999,
-        "lambda_": 0.01,
-        "max_iter": 500,
+        "lambda_": 0.05,
+        "max_iter": 1000,
         "threshold": 0.47,
         "acceptable_nan_percentage": 1,
         "outlier_limit": 0.7,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.40691501031366484
+    "f1_score": 0.3416015684247924
 }
 {
     "iteration": 18,
@@ -1315,14 +346,14 @@
         "up_sampling_percentage": 0.2,
         "degree": 1,
         "variance_threshold": 0.999,
-        "lambda_": 0.01,
-        "max_iter": 500,
-        "threshold": 0.45,
+        "lambda_": 0.05,
+        "max_iter": 1000,
+        "threshold": 0.47,
         "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
+        "outlier_limit": 0.65,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.4120297509236519
+    "f1_score": 0.3344692681679125
 }
 {
     "iteration": 19,
@@ -1331,15 +362,15 @@
         "gamma": 0.5,
         "up_sampling_percentage": 0.2,
         "degree": 1,
-        "variance_threshold": 0.999,
-        "lambda_": 0.015,
-        "max_iter": 300,
-        "threshold": 0.46,
+        "variance_threshold": 0.995,
+        "lambda_": 0.01,
+        "max_iter": 1000,
+        "threshold": 0.45,
         "acceptable_nan_percentage": 1,
         "outlier_limit": 0.7,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.4065717381750357
+    "f1_score": 0.41024101424819287
 }
 {
     "iteration": 20,
@@ -1348,15 +379,15 @@
         "gamma": 0.5,
         "up_sampling_percentage": 0.2,
         "degree": 1,
-        "variance_threshold": 0.999,
-        "lambda_": 0.015,
-        "max_iter": 300,
-        "threshold": 0.47,
+        "variance_threshold": 0.995,
+        "lambda_": 0.01,
+        "max_iter": 1000,
+        "threshold": 0.45,
         "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
+        "outlier_limit": 0.65,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.39567836760729436
+    "f1_score": 0.4106720887185283
 }
 {
     "iteration": 21,
@@ -1365,15 +396,15 @@
         "gamma": 0.5,
         "up_sampling_percentage": 0.2,
         "degree": 1,
-        "variance_threshold": 0.999,
-        "lambda_": 0.015,
-        "max_iter": 300,
-        "threshold": 0.45,
+        "variance_threshold": 0.995,
+        "lambda_": 0.01,
+        "max_iter": 1000,
+        "threshold": 0.5,
         "acceptable_nan_percentage": 1,
         "outlier_limit": 0.7,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.4117523761339994
+    "f1_score": 0.3923926930309946
 }
 {
     "iteration": 22,
@@ -1382,15 +413,15 @@
         "gamma": 0.5,
         "up_sampling_percentage": 0.2,
         "degree": 1,
-        "variance_threshold": 0.999,
-        "lambda_": 0.015,
-        "max_iter": 500,
-        "threshold": 0.46,
+        "variance_threshold": 0.995,
+        "lambda_": 0.01,
+        "max_iter": 1000,
+        "threshold": 0.5,
         "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
+        "outlier_limit": 0.65,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.4046791647697233
+    "f1_score": 0.3920576666675456
 }
 {
     "iteration": 23,
@@ -1399,15 +430,15 @@
         "gamma": 0.5,
         "up_sampling_percentage": 0.2,
         "degree": 1,
-        "variance_threshold": 0.999,
-        "lambda_": 0.015,
-        "max_iter": 500,
+        "variance_threshold": 0.995,
+        "lambda_": 0.01,
+        "max_iter": 1000,
         "threshold": 0.47,
         "acceptable_nan_percentage": 1,
         "outlier_limit": 0.7,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.39459242467876054
+    "f1_score": 0.40411184914350196
 }
 {
     "iteration": 24,
@@ -1416,15 +447,236 @@
         "gamma": 0.5,
         "up_sampling_percentage": 0.2,
         "degree": 1,
-        "variance_threshold": 0.999,
-        "lambda_": 0.015,
-        "max_iter": 500,
+        "variance_threshold": 0.995,
+        "lambda_": 0.01,
+        "max_iter": 1000,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.65,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4045342386139818
+}
+{
+    "iteration": 25,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.02,
+        "max_iter": 1000,
         "threshold": 0.45,
         "acceptable_nan_percentage": 1,
         "outlier_limit": 0.7,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.4088089571570166
+    "f1_score": 0.3903187613413769
+}
+{
+    "iteration": 26,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.02,
+        "max_iter": 1000,
+        "threshold": 0.45,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.65,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.39402400005325505
+}
+{
+    "iteration": 27,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.02,
+        "max_iter": 1000,
+        "threshold": 0.5,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.3874266947670814
+}
+{
+    "iteration": 28,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.02,
+        "max_iter": 1000,
+        "threshold": 0.5,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.65,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.381490348269102
+}
+{
+    "iteration": 29,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.02,
+        "max_iter": 1000,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.3892245262932483
+}
+{
+    "iteration": 30,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.02,
+        "max_iter": 1000,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.65,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.39078571692712327
+}
+{
+    "iteration": 31,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.05,
+        "max_iter": 1000,
+        "threshold": 0.45,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.3375461125274387
+}
+{
+    "iteration": 32,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.05,
+        "max_iter": 1000,
+        "threshold": 0.45,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.65,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.3364922211693545
+}
+{
+    "iteration": 33,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.05,
+        "max_iter": 1000,
+        "threshold": 0.5,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.3524278414743094
+}
+{
+    "iteration": 34,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.05,
+        "max_iter": 1000,
+        "threshold": 0.5,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.65,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.33703936130894907
+}
+{
+    "iteration": 35,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.05,
+        "max_iter": 1000,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.355171688726715
+}
+{
+    "iteration": 36,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.05,
+        "max_iter": 1000,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.65,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.3412060265652232
+}
+{
+    "iteration": 37,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.25,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.01,
+        "max_iter": 1000,
+        "threshold": 0.45,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4007824726750378
 }
 {
     "iteration": 1,
@@ -1433,15 +685,15 @@
         "gamma": 0.5,
         "up_sampling_percentage": 0.2,
         "degree": 1,
-        "variance_threshold": 0.99,
+        "variance_threshold": 0.999,
         "lambda_": 0.01,
         "max_iter": 1000,
         "threshold": 0.45,
         "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
+        "outlier_limit": 0.8,
+        "nan_handling": "median"
     },
-    "f1_score": 0.4105503534103533
+    "f1_score": 0.4058954286063148
 }
 {
     "iteration": 2,
@@ -1450,15 +702,15 @@
         "gamma": 0.5,
         "up_sampling_percentage": 0.2,
         "degree": 1,
-        "variance_threshold": 0.99,
+        "variance_threshold": 0.999,
         "lambda_": 0.01,
         "max_iter": 1000,
-        "threshold": 0.43,
+        "threshold": 0.45,
         "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
+        "outlier_limit": 0.8,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.41273494869547833
+    "f1_score": 0.4098280373264458
 }
 {
     "iteration": 3,
@@ -1467,15 +719,15 @@
         "gamma": 0.5,
         "up_sampling_percentage": 0.2,
         "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.015,
+        "variance_threshold": 0.999,
+        "lambda_": 0.01,
         "max_iter": 1000,
         "threshold": 0.45,
         "acceptable_nan_percentage": 1,
         "outlier_limit": 0.7,
-        "nan_handling": "numeric"
+        "nan_handling": "median"
     },
-    "f1_score": 0.40143430915604594
+    "f1_score": 0.40674851602144274
 }
 {
     "iteration": 4,
@@ -1484,15 +736,15 @@
         "gamma": 0.5,
         "up_sampling_percentage": 0.2,
         "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.015,
+        "variance_threshold": 0.999,
+        "lambda_": 0.01,
         "max_iter": 1000,
-        "threshold": 0.43,
+        "threshold": 0.45,
         "acceptable_nan_percentage": 1,
         "outlier_limit": 0.7,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.4062643554897829
+    "f1_score": 0.4106879319610565
 }
 {
     "iteration": 5,
@@ -1502,14 +754,14 @@
         "up_sampling_percentage": 0.2,
         "degree": 1,
         "variance_threshold": 0.999,
-        "lambda_": 0.01,
+        "lambda_": 0.02,
         "max_iter": 1000,
         "threshold": 0.45,
         "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
+        "outlier_limit": 0.8,
+        "nan_handling": "median"
     },
-    "f1_score": 0.4126703240630736
+    "f1_score": 0.40681882341018905
 }
 {
     "iteration": 6,
@@ -1519,14 +771,14 @@
         "up_sampling_percentage": 0.2,
         "degree": 1,
         "variance_threshold": 0.999,
-        "lambda_": 0.01,
+        "lambda_": 0.02,
         "max_iter": 1000,
-        "threshold": 0.43,
+        "threshold": 0.45,
         "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
+        "outlier_limit": 0.8,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.4140391896587525
+    "f1_score": 0.39518020486583655
 }
 {
     "iteration": 7,
@@ -1536,14 +788,14 @@
         "up_sampling_percentage": 0.2,
         "degree": 1,
         "variance_threshold": 0.999,
-        "lambda_": 0.015,
+        "lambda_": 0.02,
         "max_iter": 1000,
         "threshold": 0.45,
         "acceptable_nan_percentage": 1,
         "outlier_limit": 0.7,
-        "nan_handling": "numeric"
+        "nan_handling": "median"
     },
-    "f1_score": 0.40745662988413367
+    "f1_score": 0.40741410842334713
 }
 {
     "iteration": 8,
@@ -1553,150 +805,31 @@
         "up_sampling_percentage": 0.2,
         "degree": 1,
         "variance_threshold": 0.999,
-        "lambda_": 0.015,
+        "lambda_": 0.02,
         "max_iter": 1000,
-        "threshold": 0.43,
+        "threshold": 0.45,
         "acceptable_nan_percentage": 1,
         "outlier_limit": 0.7,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.4030410328193363
+    "f1_score": 0.39160982869331573
 }
 {
     "iteration": 9,
     "params": {
         "model": "reg_logistic_regression",
-        "gamma": 0.55,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.01,
-        "max_iter": 1000,
-        "threshold": 0.45,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.4030350116219872
-}
-{
-    "iteration": 10,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.55,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.01,
-        "max_iter": 1000,
-        "threshold": 0.43,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.4000675267301431
-}
-{
-    "iteration": 11,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.55,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.015,
-        "max_iter": 1000,
-        "threshold": 0.45,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.3923649800342376
-}
-{
-    "iteration": 12,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.55,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.99,
-        "lambda_": 0.015,
-        "max_iter": 1000,
-        "threshold": 0.43,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.39289733190195714
-}
-{
-    "iteration": 13,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.55,
+        "gamma": 0.5,
         "up_sampling_percentage": 0.2,
         "degree": 1,
         "variance_threshold": 0.999,
-        "lambda_": 0.01,
+        "lambda_": 0.05,
         "max_iter": 1000,
         "threshold": 0.45,
         "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
+        "outlier_limit": 0.8,
+        "nan_handling": "median"
     },
-    "f1_score": 0.40150330125409717
-}
-{
-    "iteration": 14,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.55,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.999,
-        "lambda_": 0.01,
-        "max_iter": 1000,
-        "threshold": 0.43,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.401277742574124
-}
-{
-    "iteration": 15,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.55,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.999,
-        "lambda_": 0.015,
-        "max_iter": 1000,
-        "threshold": 0.45,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.39009572183936303
-}
-{
-    "iteration": 16,
-    "params": {
-        "model": "reg_logistic_regression",
-        "gamma": 0.55,
-        "up_sampling_percentage": 0.2,
-        "degree": 1,
-        "variance_threshold": 0.999,
-        "lambda_": 0.015,
-        "max_iter": 1000,
-        "threshold": 0.43,
-        "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
-        "nan_handling": "numeric"
-    },
-    "f1_score": 0.39627930769443875
+    "f1_score": 0.4032061245337883
 }
 {
     "iteration": 1,
@@ -1706,12 +839,29 @@
         "up_sampling_percentage": 0.2,
         "degree": 1,
         "variance_threshold": 0.999,
-        "lambda_": 0.02,
+        "lambda_": 0.01,
         "max_iter": 1000,
-        "threshold": 0.4,
+        "threshold": 0.45,
         "acceptable_nan_percentage": 1,
-        "outlier_limit": 0.7,
+        "outlier_limit": 0.8,
+        "nan_handling": "median"
+    },
+    "f1_score": 0.4080511937266554
+}
+{
+    "iteration": 2,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.01,
+        "max_iter": 1000,
+        "threshold": 0.45,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.8,
         "nan_handling": "numeric"
     },
-    "f1_score": 0.39076300626591326
+    "f1_score": 0.412796293674469
 }

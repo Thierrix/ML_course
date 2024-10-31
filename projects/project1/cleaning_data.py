@@ -67,7 +67,7 @@ def clean_train_data(
 
     # Remove outliers before PCA to avoid their effect on components
     x, y = remove_outliers(x, y, outliers_row_limit)
-    
+    x, y = upsample_class_1_to_percentage(x, y, up_sampling_percentage)
     # Polynomial feature expansion before PCA
     x = build_poly(x, degree)
     
@@ -78,7 +78,7 @@ def clean_train_data(
     x, W, mean_pca = create_pca(x, variance_threshold)
     
     # Upsample class 1 to the required percentage
-    x, y = upsample_class_1_to_percentage(x, y, up_sampling_percentage)
+
 
     return x, y, features, median_and_most_probable_class, W, mean_pca, mean, std_dev
 
@@ -126,21 +126,6 @@ def handle_nan(x, features, median_and_most_probable_class, nan_handling):
         )
 
     return x
-
-
-def drop_na_row(x, y):
-    x = x.copy()
-    y = y.copy()
-    mask_nan_rows = [
-        (np.count_nonzero(np.isnan(x[i, :])) / x.shape[1])
-        <= ACCEPTABLE_NAN_ROW_PERCENTAGE
-        for i in range(x.shape[0])
-    ]
-
-    x = x[mask_nan_rows, :]
-    y = y[mask_nan_rows]
-    return x, y
-
 
 def remove_outliers(x, y, outliers_row_limit):
     

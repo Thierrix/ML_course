@@ -5,12 +5,12 @@
         "up_sampling_percentage": 0.2,
         "degree": 1,
         "variance_threshold": 0.999,
-        "lambda_": 0.02,
+        "lambda_": 0.01,
         "max_iter": 1000,
-        "threshold": 0.4,
+        "threshold": 0.45,
         "acceptable_nan_percentage": 1,
         "outlier_limit": 0.7,
         "nan_handling": "numeric"
     },
-    "best_f1_score": 0.39076300626591326
+    "best_f1_score": 0.41248834324127803
 }

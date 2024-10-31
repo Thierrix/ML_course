@@ -124,32 +124,31 @@ def cross_validation(
     w_initial = np.random.normal(loc=mean, scale=std_dev, size=tx_tr.shape[1])
 
     # Train the model on this fold
-    match model:
-        case "mean_squared_error_gd":
-            w, loss = mean_squared_error_gd(
-                y_tr_cleaned, tx_tr, w_initial, max_iter, gamma
-            )
-        case "mean_squared_error_sgd":
-            w, loss = mean_squared_error_gd(
-                y_tr_cleaned, tx_tr, w_initial, max_iter, gamma
-            )
-        case "ridge_regression":
-            w, loss = ridge_regression(
-                y_tr_cleaned, tx_tr, lambda_
-            )
-        case "least_squares":
-            w, loss = least_squares(
-                y_tr_cleaned, tx_tr
-            )
-        case "logistic_regression":
-            w, loss = logistic_regression(
-                y_tr_cleaned, tx_tr, w_initial, max_iter, gamma
-            )
-        case "reg_logistic_regression":
-            w, loss = reg_logistic_regression(
-                y_tr_cleaned, tx_tr, lambda_, w_initial, max_iter, gamma
-            )
-    
+    if model == "mean_squared_error_gd":
+        w, loss = mean_squared_error_gd(
+            y_tr_cleaned, tx_tr, w_initial, max_iter, gamma
+        )
+    elif model == "mean_squared_error_sgd":
+        w, loss = mean_squared_error_gd(
+            y_tr_cleaned, tx_tr, w_initial, max_iter, gamma
+        )
+    elif model == "ridge_regression":
+        w, loss = ridge_regression(
+            y_tr_cleaned, tx_tr, lambda_
+        )
+    elif model == "least_squares":
+        w, loss = least_squares(
+            y_tr_cleaned, tx_tr
+        )
+    elif model == "logistic_regression":
+        w, loss = logistic_regression(
+            y_tr_cleaned, tx_tr, w_initial, max_iter, gamma
+        )
+    elif model == "reg_logistic_regression":
+        w, loss = reg_logistic_regression(
+            y_tr_cleaned, tx_tr, lambda_, w_initial, max_iter, gamma
+        )
+
     # Predict on the testing set for this fold
     y_predict = predict(tx_te, w, threshold)
     # Compute the testing F1 score of this fold
