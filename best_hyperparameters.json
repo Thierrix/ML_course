@@ -1,0 +1,16 @@
+{
+    "best_params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.02,
+        "max_iter": 1000,
+        "threshold": 0.4,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "best_f1_score": 0.39076300626591326
+}
