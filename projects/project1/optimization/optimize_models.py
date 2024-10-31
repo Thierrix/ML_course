@@ -25,26 +25,27 @@ print("Loading complete")
 #Split the data into training and testing
 x_tr, x_te, y_tr, y_te = split_data(x_train, y_train, 0.8, seed= 2)
 
+#define the models
+models = ["reg_logistic_regression"]
+
 # Define hyperparameters in a dictionary
 hyperparameters = {
-    "lambdas": [2],
-    "up_sampling_percentages": [0.4],
-    "degrees": [4, 8],
-    "variances_threshold": [0.99],
-    "decision_threshold": [0.55],
+    "lambdas": [0.02],
+    "up_sampling_percentages": [0.2],
+    "degrees": [1],
+    "variances_threshold": [0.999],
+    "decision_threshold": [0.4],
     "acceptable_nan_percentages": [1],
-    "max_iters": [1],
-    "outliers_row_limit": [1],
-    "gammas": [1],
-    "nan_handlers": ['median']
+    "max_iters": [1000],
+    "outliers_row_limit": [0.7],
+    "gammas": [0.5],
+    "nan_handlers": ['numeric']
 }
 
 k_fold = 4
 
-# MODEL SELECTION
-model = "ridge_regression"
 
-best_params = grid_search_k_fold_logistic(model, y_tr, x_tr, k_fold, hyperparameters, labels)
+best_params = grid_search_k_fold_logistic(models, y_tr, x_tr, k_fold, hyperparameters, labels)
 
 # Unpack the best parameters
 best_gamma = best_params['gamma']

@@ -19,9 +19,6 @@ from utils import (
 from stats import z_score_normalization, min_max_normalization, normalize_data, IQR
 
 
-# Defining some constants
-ACCEPTABLE_NAN_ROW_PERCENTAGE = 0.4
-
 
 def clean_train_data(
     x_train,
@@ -68,19 +65,22 @@ def clean_train_data(
 
     x = handle_nan(x, features, median_and_most_probable_class, nan_handling)
 
-    
-    x, y = upsample_class_1_to_percentage(x, y, up_sampling_percentage)
-    # normalize the data
-    x, mean, std_dev = normalize_data(x)
-    # Create a pca on the training set, storing the components and mean of this PCA in order to replicate it
-    x, W, mean_pca = create_pca(x, variance_threshold)
-
-    #x_before_outliers = x.copy()
-    # This is commented for the time being because doing polynomial expansion is super slow
+    # Remove outliers before PCA to avoid their effect on components
     x, y = remove_outliers(x, y, outliers_row_limit)
-    x = build_poly(x,degree)
-    return x, y, features, median_and_most_probable_class, W, mean_pca, mean, std_dev
+    
+    # Polynomial feature expansion before PCA
+    x = build_poly(x, degree)
+    
+    # Normalize the data
+    x, mean, std_dev = normalize_data(x)
+    
+    # Create a PCA on the training set, storing the components and mean of this PCA in order to replicate it
+    x, W, mean_pca = create_pca(x, variance_threshold)
+    
+    # Upsample class 1 to the required percentage
+    x, y = upsample_class_1_to_percentage(x, y, up_sampling_percentage)
 
+    return x, y, features, median_and_most_probable_class, W, mean_pca, mean, std_dev
 
 def clean_test_data(
     x_te, labels, features, median_and_most_probable_class, mean_pca, W, degree, mean, std_dev
@@ -99,11 +99,10 @@ def clean_test_data(
         )
 
     # Normalize the testing data independtly from the training set
+    x = build_poly(x, degree)
     x = (x - mean) / std_dev
-
     # Apply the pca given the training PCA
     x = apply_pca_given_components(x, mean_pca, W)
-    x = build_poly(x, degree)
     return x
 
 

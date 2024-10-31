@@ -1,0 +1,1717 @@
+{
+    "iteration": 3,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 1,
+        "nan_handling": "median"
+    },
+    "f1_score": 0.13219323958229212
+}
+{
+    "iteration": 4,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.0
+}
+{
+    "iteration": 5,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "mean"
+    },
+    "f1_score": 0.13238128694497464
+}
+{
+    "iteration": 6,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "median"
+    },
+    "f1_score": 0.1397831030512167
+}
+{
+    "iteration": 7,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 0.8,
+        "outlier_limit": 1,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.0
+}
+{
+    "iteration": 8,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 0.8,
+        "outlier_limit": 1,
+        "nan_handling": "mean"
+    },
+    "f1_score": 0.14835912011688615
+}
+{
+    "iteration": 9,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 0.8,
+        "outlier_limit": 1,
+        "nan_handling": "median"
+    },
+    "f1_score": 0.14120005350426348
+}
+{
+    "iteration": 10,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 0.8,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.0
+}
+{
+    "iteration": 11,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 0.8,
+        "outlier_limit": 0.7,
+        "nan_handling": "mean"
+    },
+    "f1_score": 0.1399008197422556
+}
+{
+    "iteration": 12,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 0.8,
+        "outlier_limit": 0.7,
+        "nan_handling": "median"
+    },
+    "f1_score": 0.13331335610354095
+}
+{
+    "iteration": 13,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.55,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 1,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.0
+}
+{
+    "iteration": 1,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 1,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.0
+}
+{
+    "iteration": 2,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 1,
+        "nan_handling": "mean"
+    },
+    "f1_score": 0.12348021158572406
+}
+{
+    "iteration": 1,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.01,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 1,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.1624227666643155
+}
+{
+    "iteration": 2,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.01,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 1,
+        "nan_handling": "median"
+    },
+    "f1_score": 0.16629937829253255
+}
+{
+    "iteration": 3,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.01,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.16233807231883357
+}
+{
+    "iteration": 4,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.01,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "median"
+    },
+    "f1_score": 0.17225553236726715
+}
+{
+    "iteration": 5,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.01,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 0.8,
+        "outlier_limit": 1,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.16972698514226014
+}
+{
+    "iteration": 6,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.01,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 0.8,
+        "outlier_limit": 1,
+        "nan_handling": "median"
+    },
+    "f1_score": 0.16852263054521055
+}
+{
+    "iteration": 7,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.01,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 0.8,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.1654274007273224
+}
+{
+    "iteration": 8,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.01,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 0.8,
+        "outlier_limit": 0.7,
+        "nan_handling": "median"
+    },
+    "f1_score": 0.17482746195298027
+}
+{
+    "iteration": 9,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.01,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.55,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 1,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.16840507453589257
+}
+{
+    "iteration": 10,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.01,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.55,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 1,
+        "nan_handling": "median"
+    },
+    "f1_score": 0.17096952246463223
+}
+{
+    "iteration": 11,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.01,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.55,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.16158297970785207
+}
+{
+    "iteration": 12,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.01,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.55,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "median"
+    },
+    "f1_score": 0.17226811370027367
+}
+{
+    "iteration": 13,
+    "params": {
+        "model": "mean_squared_error_sgd",
+        "gamma": 0.01,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 3,
+        "max_iter": 300,
+        "threshold": 0.55,
+        "acceptable_nan_percentage": 0.8,
+        "outlier_limit": 1,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.16907161476148674
+}
+{
+    "iteration": 1,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.01,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 1,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.16400505249428254
+}
+{
+    "iteration": 2,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.01,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 1,
+        "nan_handling": "median"
+    },
+    "f1_score": 0.1682033690558798
+}
+{
+    "iteration": 3,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.01,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.16379641382822985
+}
+{
+    "iteration": 4,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.01,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "median"
+    },
+    "f1_score": 0.1860418906314895
+}
+{
+    "iteration": 5,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.01,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 0.8,
+        "outlier_limit": 1,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.19475523890689733
+}
+{
+    "iteration": 6,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.01,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 0.8,
+        "outlier_limit": 1,
+        "nan_handling": "median"
+    },
+    "f1_score": 0.1812745941447585
+}
+{
+    "iteration": 7,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.01,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 0.8,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.1635652941761464
+}
+{
+    "iteration": 8,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.01,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 0.8,
+        "outlier_limit": 0.7,
+        "nan_handling": "median"
+    },
+    "f1_score": 0.19175741875949898
+}
+{
+    "iteration": 9,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.01,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.55,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 1,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.18142914243322308
+}
+{
+    "iteration": 10,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.01,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.55,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 1,
+        "nan_handling": "median"
+    },
+    "f1_score": 0.1627284926009438
+}
+{
+    "iteration": 11,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.01,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.55,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.17407552754706188
+}
+{
+    "iteration": 12,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.01,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.55,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "median"
+    },
+    "f1_score": 0.18224973960950375
+}
+{
+    "iteration": 1,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 1,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4052764574298717
+}
+{
+    "iteration": 2,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 1,
+        "nan_handling": "median"
+    },
+    "f1_score": 0.398420507056748
+}
+{
+    "iteration": 3,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4058162442455322
+}
+{
+    "iteration": 4,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "median"
+    },
+    "f1_score": 0.39724377474983796
+}
+{
+    "iteration": 1,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.6,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.02,
+        "max_iter": 300,
+        "threshold": 0.46,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.3510724978284797
+}
+{
+    "iteration": 1,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.6,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.001,
+        "max_iter": 300,
+        "threshold": 0.46,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4010437948845204
+}
+{
+    "iteration": 1,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.6,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.008,
+        "max_iter": 300,
+        "threshold": 0.46,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.39166397808216025
+}
+{
+    "iteration": 2,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.6,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.008,
+        "max_iter": 300,
+        "threshold": 0.46,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.6,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.3885560032948393
+}
+{
+    "iteration": 3,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.6,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.008,
+        "max_iter": 300,
+        "threshold": 0.4,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.3976840554830334
+}
+{
+    "iteration": 4,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.6,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.008,
+        "max_iter": 300,
+        "threshold": 0.4,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.6,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.3974182558744579
+}
+{
+    "iteration": 5,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.6,
+        "up_sampling_percentage": 0.25,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.008,
+        "max_iter": 300,
+        "threshold": 0.46,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.3868687334059405
+}
+{
+    "iteration": 6,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.6,
+        "up_sampling_percentage": 0.25,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.008,
+        "max_iter": 300,
+        "threshold": 0.46,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.6,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.38686510537120455
+}
+{
+    "iteration": 7,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.6,
+        "up_sampling_percentage": 0.25,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.008,
+        "max_iter": 300,
+        "threshold": 0.4,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.37765302562305564
+}
+{
+    "iteration": 8,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.6,
+        "up_sampling_percentage": 0.25,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.008,
+        "max_iter": 300,
+        "threshold": 0.4,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.6,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.37484760761969516
+}
+{
+    "iteration": 1,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.46,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.40799657868873135
+}
+{
+    "iteration": 2,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.25,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.46,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.40204099207092264
+}
+{
+    "iteration": 1,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.02,
+        "max_iter": 300,
+        "threshold": 0.46,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4009008135072842
+}
+{
+    "iteration": 2,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.46,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4084139554779278
+}
+{
+    "iteration": 1,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.46,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.40799657868873135
+}
+{
+    "iteration": 2,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4047346050205707
+}
+{
+    "iteration": 3,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.01,
+        "max_iter": 500,
+        "threshold": 0.46,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4083832972357748
+}
+{
+    "iteration": 4,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.995,
+        "lambda_": 0.01,
+        "max_iter": 500,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.40489378208200577
+}
+{
+    "iteration": 1,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.46,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4077270202139547
+}
+{
+    "iteration": 2,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.40475113638712373
+}
+{
+    "iteration": 3,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.45,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4116246664332583
+}
+{
+    "iteration": 4,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 500,
+        "threshold": 0.46,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4076823885727012
+}
+{
+    "iteration": 5,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 500,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.40483992710260813
+}
+{
+    "iteration": 6,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 500,
+        "threshold": 0.45,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4104141798641651
+}
+{
+    "iteration": 7,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.015,
+        "max_iter": 300,
+        "threshold": 0.46,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.39801621957534683
+}
+{
+    "iteration": 8,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.015,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.3982409499549021
+}
+{
+    "iteration": 9,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.015,
+        "max_iter": 300,
+        "threshold": 0.45,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4063491737774566
+}
+{
+    "iteration": 10,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.015,
+        "max_iter": 500,
+        "threshold": 0.46,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4018799356814124
+}
+{
+    "iteration": 11,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.015,
+        "max_iter": 500,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4006610623791231
+}
+{
+    "iteration": 12,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.015,
+        "max_iter": 500,
+        "threshold": 0.45,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4016270017382969
+}
+{
+    "iteration": 13,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.46,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4095604120780733
+}
+{
+    "iteration": 14,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.40634435693040644
+}
+{
+    "iteration": 15,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.01,
+        "max_iter": 300,
+        "threshold": 0.45,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.41092908952180307
+}
+{
+    "iteration": 16,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.01,
+        "max_iter": 500,
+        "threshold": 0.46,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.40990696186867354
+}
+{
+    "iteration": 17,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.01,
+        "max_iter": 500,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.40691501031366484
+}
+{
+    "iteration": 18,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.01,
+        "max_iter": 500,
+        "threshold": 0.45,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4120297509236519
+}
+{
+    "iteration": 19,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.015,
+        "max_iter": 300,
+        "threshold": 0.46,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4065717381750357
+}
+{
+    "iteration": 20,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.015,
+        "max_iter": 300,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.39567836760729436
+}
+{
+    "iteration": 21,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.015,
+        "max_iter": 300,
+        "threshold": 0.45,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4117523761339994
+}
+{
+    "iteration": 22,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.015,
+        "max_iter": 500,
+        "threshold": 0.46,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4046791647697233
+}
+{
+    "iteration": 23,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.015,
+        "max_iter": 500,
+        "threshold": 0.47,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.39459242467876054
+}
+{
+    "iteration": 24,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.015,
+        "max_iter": 500,
+        "threshold": 0.45,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4088089571570166
+}
+{
+    "iteration": 1,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 1000,
+        "threshold": 0.45,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4105503534103533
+}
+{
+    "iteration": 2,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 1000,
+        "threshold": 0.43,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.41273494869547833
+}
+{
+    "iteration": 3,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.015,
+        "max_iter": 1000,
+        "threshold": 0.45,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.40143430915604594
+}
+{
+    "iteration": 4,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.015,
+        "max_iter": 1000,
+        "threshold": 0.43,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4062643554897829
+}
+{
+    "iteration": 5,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.01,
+        "max_iter": 1000,
+        "threshold": 0.45,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4126703240630736
+}
+{
+    "iteration": 6,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.01,
+        "max_iter": 1000,
+        "threshold": 0.43,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4140391896587525
+}
+{
+    "iteration": 7,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.015,
+        "max_iter": 1000,
+        "threshold": 0.45,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.40745662988413367
+}
+{
+    "iteration": 8,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.015,
+        "max_iter": 1000,
+        "threshold": 0.43,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4030410328193363
+}
+{
+    "iteration": 9,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.55,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 1000,
+        "threshold": 0.45,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4030350116219872
+}
+{
+    "iteration": 10,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.55,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.01,
+        "max_iter": 1000,
+        "threshold": 0.43,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.4000675267301431
+}
+{
+    "iteration": 11,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.55,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.015,
+        "max_iter": 1000,
+        "threshold": 0.45,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.3923649800342376
+}
+{
+    "iteration": 12,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.55,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.99,
+        "lambda_": 0.015,
+        "max_iter": 1000,
+        "threshold": 0.43,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.39289733190195714
+}
+{
+    "iteration": 13,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.55,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.01,
+        "max_iter": 1000,
+        "threshold": 0.45,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.40150330125409717
+}
+{
+    "iteration": 14,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.55,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.01,
+        "max_iter": 1000,
+        "threshold": 0.43,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.401277742574124
+}
+{
+    "iteration": 15,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.55,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.015,
+        "max_iter": 1000,
+        "threshold": 0.45,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.39009572183936303
+}
+{
+    "iteration": 16,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.55,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.015,
+        "max_iter": 1000,
+        "threshold": 0.43,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.39627930769443875
+}
+{
+    "iteration": 1,
+    "params": {
+        "model": "reg_logistic_regression",
+        "gamma": 0.5,
+        "up_sampling_percentage": 0.2,
+        "degree": 1,
+        "variance_threshold": 0.999,
+        "lambda_": 0.02,
+        "max_iter": 1000,
+        "threshold": 0.4,
+        "acceptable_nan_percentage": 1,
+        "outlier_limit": 0.7,
+        "nan_handling": "numeric"
+    },
+    "f1_score": 0.39076300626591326
+}

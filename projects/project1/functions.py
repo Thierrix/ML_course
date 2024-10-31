@@ -149,10 +149,9 @@ def cross_validation(
             w, loss = reg_logistic_regression(
                 y_tr_cleaned, tx_tr, lambda_, w_initial, max_iter, gamma
             )
-
+    
     # Predict on the testing set for this fold
     y_predict = predict(tx_te, w, threshold)
-
     # Compute the testing F1 score of this fold
     f1_score_te = f1_score(y_te, y_predict)
   
@@ -161,8 +160,12 @@ def cross_validation(
 
 
 
+import itertools
+import numpy as np
+import json
+
 def grid_search_k_fold_logistic(
-    model,
+    models,
     y,
     x,
     k_fold,
@@ -204,7 +207,7 @@ def grid_search_k_fold_logistic(
         if key not in hyperparameters:
             hyperparameters[key] = defaults[key]
 
-    print("Beginning grid search with k-fold cross-validation")
+   
     y, x = y.copy(), x.copy()
     seed = 12
     # Split data into k-fold indices
@@ -216,6 +219,7 @@ def grid_search_k_fold_logistic(
 
     # Generate all hyperparameter combinations using itertools.product
     all_combinations = itertools.product(
+        models,
         hyperparameters["gammas"],
         hyperparameters["up_sampling_percentages"],
         hyperparameters["degrees"],
@@ -236,6 +240,7 @@ def grid_search_k_fold_logistic(
 
     # Iterate over each hyperparameter combination
     for (
+        model,
         gamma,
         up_sampling_percentage,
         degree,
@@ -247,7 +252,7 @@ def grid_search_k_fold_logistic(
         outlier_limit,
         nan_handling,
     ) in all_combinations:
-        
+        print(f'Beginning grid search with k-fold cross-validation for {model}')
         total_f1_score_te = 0
         # Cross-validation loop
         for k in range(k_fold):
@@ -281,20 +286,25 @@ def grid_search_k_fold_logistic(
         f1_score_array.append(avg_f1_score_te)
 
         # Store the corresponding parameter combination
-        param_combinations.append(
-            {
-                "gamma": gamma,
-                "up_sampling_percentage": up_sampling_percentage,
-                "degree": degree,
-                "variance_threshold": variance_threshold,
-                "lambda_": lambda_,
-                "max_iter": max_iter,
-                "threshold": threshold,
-                "acceptable_nan_percentage": acceptable_nan_percentage,
-                "outlier_limit": outlier_limit,
-                "nan_handling": nan_handling
-            }
-        )
+        current_params = {
+            "model": model,
+            "gamma": gamma,
+            "up_sampling_percentage": up_sampling_percentage,
+            "degree": degree,
+            "variance_threshold": variance_threshold,
+            "lambda_": lambda_,
+            "max_iter": max_iter,
+            "threshold": threshold,
+            "acceptable_nan_percentage": acceptable_nan_percentage,
+            "outlier_limit": outlier_limit,
+            "nan_handling": nan_handling
+        }
+        param_combinations.append(current_params)
+
+        # Save current parameters to a JSON file
+        with open("hyperparameters_iteration.json", "a") as file:
+            json.dump({"iteration": step - 1, "params": current_params, "f1_score": avg_f1_score_te}, file, indent=4)
+            file.write("\n")
 
         # Display the parameters for this iteration
         print(
@@ -309,9 +319,12 @@ def grid_search_k_fold_logistic(
     best_f1_score = f1_score_array[best_index]
     best_params = param_combinations[best_index]
 
-    print("Finished!")
-    return best_params
+    # Save the best parameters to a JSON file
+    with open("best_hyperparameters.json", "w") as file:
+        json.dump({"best_params": best_params, "best_f1_score": best_f1_score}, file, indent=4)
 
+    print("Finished! Best hyperparameters saved to best_hyperparameters.json")
+    return best_params
 
 def slice_data(x, y, num_slices, seed):    
     """
