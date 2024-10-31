@@ -119,7 +119,7 @@ def handle_nan(x, features, median_and_most_probable_class, nan_handling):
         elif nan_handling == "numeric":
             replace_value = -1
 
-        # Store the median to replace it on the testing data
+        #Store the median to replace it on the testing data
         median_and_most_probable_class[feature] = replace_value
         x[:, features[feature]] = np.nan_to_num(
             x[:, features[feature]], nan=replace_value

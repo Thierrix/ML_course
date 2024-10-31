@@ -298,6 +298,7 @@ def grid_search_k_fold_logistic(
             "outlier_limit": outlier_limit,
             "nan_handling": nan_handling
         }
+        
         param_combinations.append(current_params)
 
         # Save current parameters to a JSON file
