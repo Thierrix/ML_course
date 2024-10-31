@@ -129,7 +129,7 @@ def cross_validation(
             y_tr_cleaned, tx_tr, w_initial, max_iter, gamma
         )
     elif model == "mean_squared_error_sgd":
-        w, loss = mean_squared_error_gd(
+        w, loss = mean_squared_error_sgd(
             y_tr_cleaned, tx_tr, w_initial, max_iter, gamma
         )
     elif model == "ridge_regression":

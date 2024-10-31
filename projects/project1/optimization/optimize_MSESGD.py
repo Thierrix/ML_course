@@ -18,7 +18,7 @@ from functions import *
 from optimization.graphs import *
 
 print("Beginning data loading")
-DATA_PATH = '/Users/williamjallot/Desktop/ML/dataset'
+DATA_PATH = 'C:/Users/clavo\OneDrive - epfl.ch/EPFL/Cours/Semester 1/CS-433/Project/dataset/dataset'
 x_train, x_test, y_train, train_ids, test_ids, labels =  load_csv_data(DATA_PATH, sub_sample=False)
 labels.pop(0) 
 print("Loading complete")
@@ -27,22 +27,22 @@ x_tr, x_te, y_tr, y_te = split_data(x_train, y_train, 0.8, seed= 2)
 
 # Define hyperparameters in a dictionary
 hyperparameters = {
-    "lambdas": [2],
-    "up_sampling_percentages": [0.4],
-    "degrees": [4, 8],
-    "variances_threshold": [0.99, 0.95],
-    "decision_threshold": [0.55, 0.6, 0.53],
+    "lambdas": [1e-4],
+    "up_sampling_percentages": [0.2],
+    "degrees": [1, 10],
+    "variances_threshold": [0.99],
+    "decision_threshold": [0.45, 0.5, 0.55],
     "acceptable_nan_percentages": [1],
-    "max_iters": [1],
-    "outliers_row_limit": [1],
-    "gammas": [0.9, 1],
+    "max_iters": [300],
+    "outliers_row_limit": [0.8],
+    "gammas": [0.9],
     "nan_handlers": ['numeric', 'mean', 'median']
 }
 
 k_fold = 4
 
 # MODEL SELECTION
-model = "mean_squared_error_sgd"
+model = ["mean_squared_error_sgd"]
 
 best_params = grid_search_k_fold_logistic(model, y_tr, x_tr, k_fold, hyperparameters, labels)
 
