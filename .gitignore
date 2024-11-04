@@ -105,3 +105,8 @@ ENV/
 *.cb2
 *.fdb_latexmk
 *.synctex.gz
+*.gz
+labs/ex07/template/data/MNIST/raw/t10k-images-idx3-ubyte
+labs/ex07/template/data/MNIST/raw/t10k-labels-idx1-ubyte
+labs/ex07/template/data/MNIST/raw/train-images-idx3-ubyte
+labs/ex07/template/data/MNIST/raw/train-labels-idx1-ubyte
