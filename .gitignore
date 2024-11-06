@@ -110,3 +110,11 @@ labs/ex07/template/data/MNIST/raw/t10k-images-idx3-ubyte
 labs/ex07/template/data/MNIST/raw/t10k-labels-idx1-ubyte
 labs/ex07/template/data/MNIST/raw/train-images-idx3-ubyte
 labs/ex07/template/data/MNIST/raw/train-labels-idx1-ubyte
+labs/ex08/template/data/FMNIST/ModifiedDataset/raw/t10k-images-idx3-ubyte
+labs/ex08/template/data/FMNIST/ModifiedDataset/raw/t10k-labels-idx1-ubyte
+labs/ex08/template/data/FMNIST/ModifiedDataset/raw/train-images-idx3-ubyte
+labs/ex08/template/data/FMNIST/ModifiedDataset/raw/train-labels-idx1-ubyte
+labs/ex08/template/data/MNIST/ModifiedDataset/raw/t10k-images-idx3-ubyte
+labs/ex08/template/data/MNIST/ModifiedDataset/raw/t10k-labels-idx1-ubyte
+labs/ex08/template/data/MNIST/ModifiedDataset/raw/train-images-idx3-ubyte
+labs/ex08/template/data/MNIST/ModifiedDataset/raw/train-labels-idx1-ubyte
