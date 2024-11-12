@@ -126,3 +126,7 @@ labs/ex08/template/data/MNIST/ModifiedDataset/raw/t10k-images-idx3-ubyte
 labs/ex08/template/data/MNIST/ModifiedDataset/raw/t10k-labels-idx1-ubyte
 labs/ex08/template/data/MNIST/ModifiedDataset/raw/train-images-idx3-ubyte
 labs/ex08/template/data/MNIST/ModifiedDataset/raw/train-labels-idx1-ubyte
+labs/ex09/data/MNIST/raw/t10k-images-idx3-ubyte
+labs/ex09/data/MNIST/raw/t10k-labels-idx1-ubyte
+labs/ex09/data/MNIST/raw/train-images-idx3-ubyte
+labs/ex09/data/MNIST/raw/train-labels-idx1-ubyte
